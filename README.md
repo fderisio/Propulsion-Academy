@@ -1,6 +1,6 @@
 # Propulsion-Academy-Bootcamp-Projects
 
-**Week 1: **
+**Week 1:**
   Day 1 - Fundamentals
   Day 2
   Day 3

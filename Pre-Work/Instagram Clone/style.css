@@ -1,0 +1,126 @@
+* {
+	font-family: Nunito, Arial;
+	font-weight: bold;
+	color: grey;
+	font-size: 16px;
+	text-decoration: none;
+	text-align: center;
+	list-style-type: none;
+	/*border: 1px solid black;*/
+}
+
+body {
+	background-color: #f5f5f5;
+}
+
+#img1 {
+	margin-bottom: 60px;
+	margin-right: 140px;
+	width: 18%;
+}
+
+#img2 {
+	position: absolute;
+	z-index: 1;
+	left: 380px;
+	top: 150px;
+}
+
+.cell {
+	display: table-cell;
+	display: inline;
+}
+
+.signUp {
+	margin-top: 35px;
+	background-color: white;
+	border: 1px solid #EEE5FF;
+	border-radius: 2px;
+	display: inline-block;
+	font-size: 20px;
+}
+
+#logo {
+	width: 50%;
+	margin-top: 20px;
+}
+
+li input {
+	font-family: Raleway, Arial;
+	font-weight: normal;
+	font-size: 12px;
+	background-color: white;
+	text-align: left;
+	display: inline-block;
+	width: 80%;
+	padding: 0.75em;
+	margin: 5px 55px 0px 0px;
+	border-radius: 5px;
+	border: 1px solid #EEE5FF;
+}
+
+.buttons {
+	color: white;
+	background-color: #138BE8;
+	border-radius: 5px;
+	border: none;
+	width: 77%;
+	font-weight: bold;
+	padding: 8px 15px;
+}
+
+#termsText {
+	font-size: 14px;
+	font-weight: normal;
+	margin-bottom: 30px;
+}
+
+.terms {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#logIn {
+	background-color: white;
+	border: 1px solid #EEE5FF;
+	border-radius: 2px;
+	margin: 10px 30.2em; /*(top&bottom right&left)*/
+}
+
+.blackText {
+	padding-right: 10px;
+	font-weight: normal;
+	font-size: 14px;
+	color: black;
+}
+
+#logInLink {
+	color: blue;
+}
+
+.appStore {
+	width: 10%;
+}
+
+.appGoogleplay {
+	width: 8.3%;
+}
+
+footer {
+	text-align: center;
+	margin: 40px 0px 75px 160px; /*top, right, bottom, left*/
+	width: 80%;
+}
+
+#footerList1 li a {
+	font-size: 11px;
+	padding-right: 18px;
+	float: left;
+	color: #07064F;
+}
+
+#footerList2 li a {
+	padding-right: 100px;
+	font-size: 11px;
+	float: right;
+}

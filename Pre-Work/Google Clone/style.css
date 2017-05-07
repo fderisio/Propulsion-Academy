@@ -1,0 +1,93 @@
+* {
+	text-align: center;
+	font-family: Arial;
+	font-size: 13px;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+#firstList {
+	padding: 5px 20px 0px 0px; /*padding: top, right, bottom, left;*/
+	display: block;
+  	text-decoration: none;
+}
+
+#appIcon {
+	vertical-align: middle;
+	height: 16px;
+}
+
+#signIn {
+	background-color: blue;
+	color: white;
+	padding: 7px 15px;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+#logo {
+	margin: 8em 0em 0em 8em;
+	width: 15em; height: 100px; object-fit: none;
+}
+
+li a {
+	color: black;
+	display: inline-block;
+	padding-right: 20px;
+}
+
+#firstList li a {
+	float: right;
+	text-align: left;
+}
+
+p a {
+	color: blue;
+}
+
+#inputText {
+	border: 1px;
+	box-shadow: 1px 2px 10px #999;
+	font-size: 16px;
+	text-align: left;
+	width: 40%;
+	padding: 0.75em;
+}
+
+#searchIcon {
+	width: 3%;
+	height: 40px;
+	vertical-align: middle;
+}
+
+.buttons {
+	font-weight: bold;
+	margin: 40px 0px 20px 0px;
+	color: grey;
+	background-color: #EEE5FF;
+	padding: 8px 15px;
+	border-radius: 2px;
+	border: none;
+}
+
+.buttons:hover {
+	color: black;
+}
+
+footer {
+	background-color: #EEE5FF;
+	position: absolute;
+	bottom: 0;
+	width: 99%;
+  	height: 40px;
+}
+
+#footerList1 li a {
+	float: left;
+	color: grey;
+}
+
+#footerList2 li a {
+	float: right;
+	color: grey;
+}

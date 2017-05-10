@@ -1,0 +1,30 @@
+apply plugin: 'java' // the programs are gonna be used
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+jar {
+	baseName = 'gradleTest' // nombre de la carpeta donde esta el proyecto
+	version = '1.0.0-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8 // version 8 de Java
+targetCompatibility = 1.8
+
+ext.assertJVersion  = '3.5.2' // variables con las versiones de cada libreria
+ext.junitVersion    = '4.12' 
+ext.mockitoJVersion = '2.7.0'
+
+repositories { // porque se va a utilizar maven
+	mavenCentral()
+}
+
+dependencies {
+	testCompile("junit:junit:${junitVersion}") // dependencias con los nombres de las variables
+	testCompile("org.assertj:assertj-core:${assertJVersion}") // the core baja mas archivos que necesita la dependencia
+	testCompile("org.mockito:mockito-core:${mockitoJVersion}")
+}
+
+task wrapper(type: Wrapper) { // version del gradle, para que se haga una copia local si alguien ve el archivo en github
+	gradleVersion = '3.5'
+}

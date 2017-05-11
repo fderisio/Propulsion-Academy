@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+jar {
+	baseName = 'Day4'
+	version = '1.0.0-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext.assertJVersion  = '3.5.2'
+ext.junitVersion    = '4.12'
+ext.mockitoJVersion = '2.7.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile("junit:junit:${junitVersion}")
+	testCompile("org.assertj:assertj-core:${assertJVersion}")
+	testCompile("org.mockito:mockito-core:${mockitoJVersion}")
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.5'
+}

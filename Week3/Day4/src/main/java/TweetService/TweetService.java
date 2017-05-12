@@ -1,19 +1,12 @@
 package TweetService;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TweetService {
 	
 	HashMap<String, Tweet> tweetsDatabase = new HashMap<>();
-	
-//	public static void main(String[] args) {
-//		Tweet tweet1 = new Tweet("hola gente");
-//		System.out.println(tweet1.getId() + tweet1.getText());
-//	}
 	
 	// save new tweet
 	public void save(Tweet tweet) {
@@ -56,7 +49,9 @@ public class TweetService {
 				mentionedTweets.add(tweet);
 			}
 		}
+		System.out.println("The following tweets with the word " + someString + " found: " + mentionedTweets);
 		return mentionedTweets;
+		
 	}
 	
 }

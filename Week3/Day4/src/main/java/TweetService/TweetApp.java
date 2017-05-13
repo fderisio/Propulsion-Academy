@@ -33,7 +33,7 @@ public class TweetApp{
 				System.out.println("Enter the ID Nr. of the tweet you want to delete in the next line");
 				text2 = scan.nextLine();
 				tweetService.delete(text2);
-				System.out.println("Press 5 to go back to the menu or type ESC to exit");
+				System.out.println("Press 5 to go back to the menu or 0 to escape");
 				option2 = scan.nextInt();
 				checkMenu(option2);
 				
@@ -41,7 +41,7 @@ public class TweetApp{
 				System.out.println("Enter the ID Nr. of the tweet you want to search in the next line");
 				text3 = scan.nextLine();
 				tweetService.findById(text3);
-				System.out.println("Press 5 to go back to the menu or type ESC to exit");
+				System.out.println("Press 5 to go back to the menu or 0 to escape");
 				option2 = scan.nextInt();
 				checkMenu(option2);
 				
@@ -49,12 +49,12 @@ public class TweetApp{
 				System.out.println("Enter a word to start the search");
 				text4 = scan.nextLine();
 				tweetService.search(text4);
-				System.out.println("Press 5 to go back to the menu or type ESC to exit");
+				System.out.println("Press 5 to go back to the menu or 0 to escape");
 				option2 = scan.nextInt();
 				checkMenu(option2);
 				
 			} else {
-				System.out.println("Please enter a number between 1 and 4, press 5 to go to the menu or type ESC to exit");
+				System.out.println("Please enter a number between 1 and 4, press 5 to go to the menu or 0 to escape");
 			}
 			
 		}	

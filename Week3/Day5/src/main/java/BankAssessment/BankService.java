@@ -16,19 +16,19 @@ public class BankService {
 		System.out.println("Customer´s ID: " + customer.getId());
 	}
 		
-	// remove a customer
+	// remove customer
 	public void delete(String id) {
 		// checks if the ID exists
-		for (Customers customer : listAll()) {
+		for (Customers customer : allCustomers()) {
 			if (customer.getId().contains(id)) {
 				bankDatabase.remove(id);	
 				System.out.println("Customer deleted successfully. Remained customers: " + bankDatabase.size());
 			}
-			System.out.println("The given ID does not exists");
 		}
+		System.out.println("The given ID does not exist");
 	}	
 			
-	// find customer with ID
+	// find customer by ID
 	public Customers findById(String id) {
 		Customers found = bankDatabase.get(id);
 		System.out.println("With the given ID, we found the following client: " + found.getName());
@@ -40,9 +40,10 @@ public class BankService {
 		return bankDatabase.size();
 	}
 		
-	// list all customer
+	// list all customers
 	public List<Customers> listAll() {
 		ArrayList<Customers> customersList = new ArrayList<>(this.bankDatabase.values());
+		//prints list nicely
 		for (Iterator<Customers> i = customersList.iterator(); i.hasNext();) {
 		    Customers item = i.next();
 		    System.out.println(item);
@@ -52,14 +53,22 @@ public class BankService {
 		
 	// search for a specific string
 	public List<Customers> search(String someString) {
+		System.out.println("Customers´ names found with '" + someString + "':");
 		List<Customers> mentionedCustomers = new ArrayList<Customers>();
-		for (Customers customer : listAll()) {
+		for (Customers customer : allCustomers()) {
 			if (customer.getName().contains(someString)) {
 				mentionedCustomers.add(customer);
 			}
 		}
-		System.out.println("The following customers with the word " + someString + " were found: " + mentionedCustomers);
+		// prints mentioned customers nicely
+		for (Iterator<Customers> i = mentionedCustomers.iterator(); i.hasNext();) {
+		    Customers item = i.next();
+		    System.out.println(item);
+		}
 		return mentionedCustomers;
 	}
 	
+	public List<Customers> allCustomers() {
+		return new ArrayList<>(this.bankDatabase.values());
+	}
 }

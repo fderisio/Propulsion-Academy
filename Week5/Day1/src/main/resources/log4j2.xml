@@ -6,7 +6,7 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<Logger name="org.springframework.context" level="info" />
+		<Logger name="org.springframework.context" level="WARN" />
 		<Root level="error">
 			<AppenderRef ref="Console" />
 		</Root>

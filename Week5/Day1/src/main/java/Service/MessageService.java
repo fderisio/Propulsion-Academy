@@ -18,13 +18,16 @@ package Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service // @Service("messageServiceBean") --> ("explicit bean name")
+@Profile("dev")
 public class MessageService {
 
 	private final MessageFormatter formatter;
-
+	private final JavaMailSender javaMailSender;
+	
 	public MessageService(MessageFormatter formatter) {
 		this.formatter = formatter;
 	}
@@ -32,6 +35,10 @@ public class MessageService {
 	@Autowired
 	public MessageService (List<MessageFormatter> messageFormatters){
 		this(new CompositeMessageFormatter(messageFormatters));
+	}
+	
+	private void sendNotificationEmail(String message){
+		
 	}
 	
 	public String generateMessage() {

@@ -16,6 +16,13 @@
 
 package Service;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+
+@Component
+@Order(4)
+@Profile("dev")
 class ConsoleMessageFormatter implements MessageFormatter {
 
 	// Singleton: only one instance in the application.

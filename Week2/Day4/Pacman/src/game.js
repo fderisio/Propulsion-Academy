@@ -22,7 +22,7 @@ export default class Game {
 		// squares
 		const wall9 = new Wall([20, 120], [200, 120]);
 		const wall10 = new Wall([30, 120], [150, 120]);
-		const wall11 = new Wall([80,	50]	, [80,	150]);
+		const wall11 = new Wall([80, 50], [80, 150]);
 		const wall12 = new Wall([115,50] , [115, 150]);
 		const wall13 = new Wall([20, 120], [200, 120]);
 		const wall14 = new Wall([20, 120], [200, 120]);

@@ -16,11 +16,13 @@
 
 package Service;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.*;
 
 @Component
 @Order(2)
+@Profile("dev")
 public class UpperCaseMessageFormatter implements MessageFormatter {
 
 	@Override

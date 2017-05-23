@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+jar {
+	baseName = 'twitter-m1'
+	version = '1.0.0-M1'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext.assertJVersion  = '3.7.0'
+ext.junitVersion    = '4.12'
+ext.log4jVersion    = '2.8.2'
+ext.lombokVersion   = '1.16.16'
+ext.mockitoJVersion = '2.7.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly("org.projectlombok:lombok:${lombokVersion}")
+
+	compile("org.apache.logging.log4j:log4j-api:${log4jVersion}")
+	compile("org.apache.logging.log4j:log4j-core:${log4jVersion}")
+
+	testCompile("junit:junit:${junitVersion}")
+	testCompile("org.assertj:assertj-core:${assertJVersion}")
+	testCompile("org.mockito:mockito-core:${mockitoJVersion}")
+}
+
+task showMeCache {
+	doLast {
+		println('compileOnly dependencies:')
+		configurations.compileOnly.each { println it }
+		println('testCompile dependencies:')
+		configurations.testCompile.each { println it }
+	}
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.5'
+}

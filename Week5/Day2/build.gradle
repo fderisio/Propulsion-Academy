@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+jar {
+    baseName = 'gradle-spring-template'
+    version = '1.0.0-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext.assertJVersion   = '3.7.0'
+ext.junitVersion     = '4.12'
+ext.log4jVersion     = '2.8'
+ext.lombokVersion    = '1.16.12'
+ext.mockitoVersion   = '2.7.0'
+ext.springVersion    = '4.3.6.RELEASE'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly("org.projectlombok:lombok:${lombokVersion}")
+	compile("org.springframework:spring-context:${springVersion}")
+	compile("org.apache.logging.log4j:log4j-api:${log4jVersion}")
+	compile("org.apache.logging.log4j:log4j-core:${log4jVersion}")
+	compile("org.apache.logging.log4j:log4j-jcl:${log4jVersion}")
+
+	testCompile("junit:junit:${junitVersion}")
+	testCompile("org.assertj:assertj-core:${assertjVersion}")
+	testCompile("org.mockito:mockito-core:${mockitoVersion}")
+	testCompile("org.springframework:spring-test:${springVersion}")
+}
+
+eclipse.project {
+	natures 'org.springframework.ide.eclipse.core.springnature'
+	buildCommand 'org.springframework.ide.eclipse.core.springbuilder'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.5'
+}

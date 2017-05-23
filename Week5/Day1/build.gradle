@@ -27,6 +27,7 @@ repositories {
 dependencies {
 	compileOnly("org.projectlombok:lombok:${lombokVersion}")
 	compile("org.springframework:spring-context:${springVersion}")
+	compile("org.springframework:spring-context-support:${springVersion}")
 	compile("org.apache.logging.log4j:log4j-api:${log4jVersion}")
 	compile("org.apache.logging.log4j:log4j-core:${log4jVersion}")
 	compile("javax.mail:javax.mail-api:${mailApiVersion}")

@@ -16,9 +16,6 @@
 
 package Service;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -57,29 +54,29 @@ public class MessageServiceTests {
 		
 	}
 	
-	@Test
-	public void consoleFormatter() {
-		ConsoleMessageFormatter formatter = new ConsoleMessageFormatter();
-
-		MessageService service = new MessageService(formatter);
-
-		assertThat(service.generateMessage()).isEqualTo("Hello, World!");
-	}
-
-	@Test
-	public void htmlFormatter() {
-		MessageService service = new MessageService(new HtmlMessageFormatter());
-
-		assertThat(service.generateMessage()).isEqualTo("<strong>Hello, World</strong>");
-	}
-
-	@Test
-	public void markdownFormatter() {
-		MessageFormatter formatter = new MarkdownMessageFormatter();
-
-		MessageService service = new MessageService(formatter);
-
-		assertThat(service.generateMessage()).isEqualTo("**Hello, World**");
-	}	
+//	@Test
+//	public void consoleFormatter() {
+//		ConsoleMessageFormatter formatter = new ConsoleMessageFormatter();
+//
+//		MessageService service = new MessageService(formatter);
+//
+//		assertThat(service.generateMessage()).isEqualTo("Hello, World!");
+//	}
+//
+//	@Test
+//	public void htmlFormatter() {
+//		MessageService service = new MessageService(new HtmlMessageFormatter());
+//
+//		assertThat(service.generateMessage()).isEqualTo("<strong>Hello, World</strong>");
+//	}
+//
+//	@Test
+//	public void markdownFormatter() {
+//		MessageFormatter formatter = new MarkdownMessageFormatter();
+//
+//		MessageService service = new MessageService(formatter);
+//
+//		assertThat(service.generateMessage()).isEqualTo("**Hello, World**");
+//	}	
 
 }

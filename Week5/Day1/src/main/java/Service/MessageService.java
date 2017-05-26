@@ -26,24 +26,21 @@ import org.springframework.stereotype.Service;
 public class MessageService {
 
 	private final MessageFormatter formatter;
-	private final JavaMailSender javaMailSender;
 	
+	@Autowired
 	public MessageService(MessageFormatter formatter) {
 		this.formatter = formatter;
 	}
-	
+
 	@Autowired
 	public MessageService (List<MessageFormatter> messageFormatters){
 		this(new CompositeMessageFormatter(messageFormatters));
 	}
 	
-	private void sendNotificationEmail(String message){
-		
-	}
-	
 	public String generateMessage() {
 		return formatter.format("Hello, World");
 	}
+	
 
 	// @Autowired (creates a constructor)
 	// @Qualifier (chooses which bean to use)

@@ -30,7 +30,7 @@ public class JdbcDemo {
 		String sql = "insert into movies(name, director, year) values (?,?,?)";
 		jdbcTemplate.update(sql, "Toy Story", "John Lasseter", 1995);
 		jdbcTemplate.update(sql, "Grand Hotel Budapest", "Wes Anderson", 2014);
-		jdbcTemplate.update(sql, "Inside Out", "Disney", 2015);
+		jdbcTemplate.update(sql, "Inside Out", "Pete Docter", 2015);
 		jdbcTemplate.update(sql, "Hidden Figures", "Theodore Melfi", 2016);
 		jdbcTemplate.update(sql, "Lion", "Garth Davies", 2016);
 		jdbcTemplate.update(sql, "Lalaland", "Damien Chazelle", 2016);
@@ -79,7 +79,7 @@ public class JdbcDemo {
 		
 		// lists all the movies as objects
 		sql = "select * from movies";
-		List<Movie> movies = jdbcTemplate.query(sql, (rs, num) -> {
+		List<Movie> movies = jdbcTemplate.query(sql, (rs, rowNum) -> {
 				return new Movie(
 					rs.getInt("id"),
 					rs.getString("name"),

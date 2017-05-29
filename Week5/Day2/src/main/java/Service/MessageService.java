@@ -51,7 +51,7 @@ public class MessageService {
 		try{
 			helper.setFrom("system@example.com");
 			helper.setTo("test@example.com");
-			helper.setSubject("My Subject");
+			helper.setSubject("Test E-Mail");
 			helper.setText(message);
 			javaMailSender.send(mimeMessage);
 		} catch (MessagingException ex) {

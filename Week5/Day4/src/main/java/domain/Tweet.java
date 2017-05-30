@@ -1,10 +1,15 @@
 package domain;
 
-import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@AllArgsConstructor
+@EqualsAndHashCode(exclude = "id")
 public class Tweet {
 	
-	private final String id = UUID.randomUUID().toString();
+	private final Integer id;
 	public String author;
 	public String text;
 	
@@ -12,30 +17,6 @@ public class Tweet {
 		this.author = author;
 		this.text = text;
 	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	@Override
-	public String toString() {
-		return "Tweet [id=" + id + ", author=" + author + ", text=" + text + "]";
-	}	
 	
+	// setId???
 }

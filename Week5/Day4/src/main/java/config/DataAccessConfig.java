@@ -4,13 +4,11 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@Profile("dev")
-public class DataBaseConfig {
+public class DataAccessConfig {
 	
 	@Bean
 	public DataSource dataSource() {

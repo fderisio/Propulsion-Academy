@@ -1,4 +1,4 @@
-package repository;
+package twitter.repository;
 
 import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,19 +8,22 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 
-import config.RepositoryConfig;
-import config.TestDataAccessConfig;
-import domain.Tweet;
+import twitter.domain.Tweet;
+
+//@RunWith(SpringRunner.class)
+//@ContextConfiguration(classes = { RepositoryConfig.class, TestDataAccessConfig.class })
+//@Transactional
+//@Sql("/test-data.sql")
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { RepositoryConfig.class, TestDataAccessConfig.class })
-@ActiveProfiles("dev") // activated ONLY in TestDataAccessConfig AND TestMainConfig
+@SpringBootTest(webEnvironment = WebEnvironment.NONE)
 @Transactional
 @Sql("/test-data.sql")
 public class TweetRepositoryTests {
@@ -31,25 +34,24 @@ public class TweetRepositoryTests {
 	@Test
 	public void save() {
 		saveTweet1();
-		assertNumTweets(7);
+		assertNumTweets(1);
 	}
 
 	@Test
 	public void deleteById() {
 		Tweet tweet1 = saveTweet1();
-		assertNumTweets(7);
+		assertNumTweets(1);
 		// Integer id = repository.findAll().get(0).getId();
 		// repository.deleteById(id);
-		int id = tweet1.getId();
-		repository.deleteById(id);
-		assertNumTweets(6);
+		repository.deleteById(tweet1.getId());
+		assertNumTweets(0);
 	}
 
 	@Test
 	public void deleteAll() {
 		saveTweet1();
 		saveTweet2();
-		assertNumTweets(8);
+		assertNumTweets(2);
 		repository.deleteAll();
 		assertNumTweets(0);
 	}
@@ -57,8 +59,8 @@ public class TweetRepositoryTests {
 	@Test
 	public void findById() {
 		saveTweet1();
-		assertNumTweets(7);
-		Integer id = repository.findAll().get(6).getId();
+		assertNumTweets(1);
+		Integer id = repository.findAll().get(0).getId();
 		Tweet tweet = repository.findById(id);
 		assertThat(tweet.getAuthor()).isEqualTo("mary01");
 		assertThat(tweet.getText()).isEqualTo("Hello, Twitter!");
@@ -68,8 +70,11 @@ public class TweetRepositoryTests {
 	public void findAll() {
 		Tweet tweet1 = saveTweet1();
 		Tweet tweet2 = saveTweet2();
-		assertNumTweets(8);
-		//assertThat(repository.findAll()).containsExactlyInAnyOrder(tweet2, tweet1);
+		assertNumTweets(2);
+		assertThat(repository.findAll()).containsExactlyInAnyOrder(tweet2, tweet1);
+
+		// List<String> tweetTexts = repository.findAll().stream().map(Tweet::getText).collect(toList());
+		// assertThat(tweetTexts).containsExactlyInAnyOrder("Hello, Twitter!", "2nd tweet");
 	}
 
 	@Test
@@ -125,7 +130,7 @@ public class TweetRepositoryTests {
 		save3Tweets();
 		assertNumTweets(3);
 		List<String> usernames = repository.findAllUsernames();
-		assertThat(usernames).containsExactlyInAnyOrder("mary01", "john_06", "jsmith", "yoda");
+		assertThat(usernames).containsExactlyInAnyOrder("mary01", "john_06");
 	}
 
 	

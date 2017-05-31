@@ -1,4 +1,4 @@
-package repository;
+package twitter.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import domain.Tweet;
+import twitter.domain.Tweet;
 
 @Repository
 public class JdbcTweetRepository implements TweetRepository{
@@ -49,7 +49,7 @@ public class JdbcTweetRepository implements TweetRepository{
 //		sql = "SELECT count(*) FROM tweets";
 //		Integer cantTweets = jdbcTemplate.queryForObject(sql, Integer.class);
 //		return cantTweets;
-		return jdbcTemplate.queryForObject("SELECT count(*) FROM tweet", Integer.class);
+		return jdbcTemplate.queryForObject("SELECT count(*) FROM tweets", Integer.class);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class JdbcTweetRepository implements TweetRepository{
 	public void deleteById(Integer id) {
 //		String sql = "DELETE FROM tweets WHERE id=?";
 //		jdbcTemplate.queryForObject(sql, String.class, id);
-		jdbcTemplate.queryForObject("DELETE FROM tweet WHERE id=?", tweetMapper, id);
+		jdbcTemplate.queryForObject("DELETE FROM tweets WHERE id=?", tweetMapper, id);
 	}
 	
 	@Override
@@ -102,5 +102,6 @@ public class JdbcTweetRepository implements TweetRepository{
 		String sql = "select distinct lower(author) from tweet";
 		return jdbcTemplate.queryForList(sql, String.class);
 	}
+
 
 }

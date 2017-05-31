@@ -1,8 +1,8 @@
-package repository;
+package twitter.repository;
 
 import java.util.List;
 
-import domain.Tweet;
+import twitter.domain.Tweet;
 
 public interface TweetRepository {
 
@@ -13,7 +13,6 @@ public interface TweetRepository {
 	List<Tweet> findAll();
 	List<Tweet> findAllByUsername(String username);
 	List<Tweet> findAllContaining(String searchText);
-	void findAllByUsernameWithExactMatch();
 	List<String> findAllUsernames();
 	void deleteAll();
 }

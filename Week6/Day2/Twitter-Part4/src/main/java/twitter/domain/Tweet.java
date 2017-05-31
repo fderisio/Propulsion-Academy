@@ -1,4 +1,4 @@
-package domain;
+package twitter.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,5 +17,6 @@ public class Tweet {
 		this.author = author;
 		this.text = text;
 	}
-
+	
+	// setId???
 }

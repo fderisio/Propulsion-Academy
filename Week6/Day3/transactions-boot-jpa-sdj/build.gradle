@@ -17,7 +17,7 @@ apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 
 jar {
-	baseName = 'transactions-boot-jpa'
+	baseName = 'transactions-boot-jpa-sdj'
 	version = '1.0.0-SNAPSHOT'
 }
 

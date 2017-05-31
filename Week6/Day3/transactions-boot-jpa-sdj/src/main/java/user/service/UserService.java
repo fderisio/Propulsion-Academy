@@ -27,5 +27,5 @@ public interface UserService {
 	User findByFirstNameAndLastName(String firstName, String lastName);
 
 	void deleteById(Long id);
-
+	
 }

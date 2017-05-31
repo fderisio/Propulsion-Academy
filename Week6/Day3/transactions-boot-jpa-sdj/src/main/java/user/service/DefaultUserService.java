@@ -53,7 +53,7 @@ public class DefaultUserService implements UserService {
 	@Transactional(readOnly = false)
 	@Override
 	public void deleteById(Long id) {
-		this.userRepository.deleteById(id);
+		this.userRepository.delete(id);
 	}
-
+	
 }

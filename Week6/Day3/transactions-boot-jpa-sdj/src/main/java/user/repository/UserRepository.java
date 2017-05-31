@@ -18,26 +18,19 @@ package user.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import user.domain.User;
-
-public interface UserRepository {
-
-	long count();
-
-	void save(User user);
-
-	List<User> findAll();
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>{
 
 	User findById(Long id);
 	
-	User findFirstByLastName(String lastName);
+	User findFirstByLastNameOrderByFirstNameAsc(String lastName);
 
 	User findByFirstNameAndLastName(String firstName, String lastName);
 
-	void deleteAll();
-
-	void deleteById(Long id);
-	
 	List<User> findFirst10ByLastName(String lastName);
 
 }

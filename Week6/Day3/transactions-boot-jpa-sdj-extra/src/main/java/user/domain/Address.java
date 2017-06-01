@@ -67,8 +67,6 @@ public class Address {
 		this.id = id;
 	}
 	
-	// por que 3 constructores??
-	
 	@Override
 	public String toString() {
 		return "Address [id=" + this.id + ", type=" + this.type + ", street=" + this.street + ", city=" + this.city

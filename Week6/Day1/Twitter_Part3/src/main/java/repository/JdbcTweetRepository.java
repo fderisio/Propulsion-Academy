@@ -103,4 +103,10 @@ public class JdbcTweetRepository implements TweetRepository{
 		return jdbcTemplate.queryForList(sql, String.class);
 	}
 
+	@Override
+	public void findAllByUsernameWithExactMatch() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

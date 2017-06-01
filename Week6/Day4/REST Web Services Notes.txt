@@ -1,0 +1,152 @@
+Date: 1.6.2017
+
+Web services: una computadora envia una solicitud al servidor, el servidor la procesa y responde al cliente
+
+Tipos de web services:
+SOAP = 
+REST = REpresentational State Transfer
+
+REST web services:
+respuesta de estilo arquitectónico (no es estadar)
+Ubiquitous = esta en todos lados
+Scalable = internet funciona bien en todo el mundo
+Stateless = el estado esta en el browser (no en la memoria)
+se enfoca en sustantivos (con qué interactua) y verbos (cómo interactua: post, get, put, delete) (post & get soportado por el browser)
+
+errors: son mensajes estandar de HTTP. Standard HTTP response codes, RestApiTutorial.com 
+
+http://example.com/events/1 --> 1 = id nr. 1 (get, put, delete el id 1)
+
+Marshalling --> java object to JSON object (or an external format)
+Unmarshalling --> inversa de Marshalling 
+
+payload = lo que contiene un request
+
+Spring REST no es implementacion de jax-rs
+
+@Controllers: endpoints de web services --> @ResponseBody en todos los metodos
+
+Ej:
+@RestController --> evita escribir @ResponseBody en los metodos :D
+@RequestMapping("/events")
+public class RestEventsController {
+
+	private final EventService service;
+
+	public RestEventsController(EventService service) {
+		this.service = service;
+	}
+}
+
+
+@GetMapping --> http://localhost:8080/events
+public List<Event> retrieveAllEvents() {
+	return service.findAll();
+}
+@GetMapping("/{id}") --> http://localhost:8080/events/9
+public Event retrieveEvent(@PathVariable Long id) {
+	return service.findById(id);
+}
+
+@PostMapping
+public HttpEntity<Void> createEvent(@RequestBody Event event) { --> @ResquestBody es el elemento que se va a crear
+	Event savedEvent = service.save(event);
+
+	UriComponents uriComponents = fromMethodCall( --> uriComponents.encode().toUri() --> location donde se guardara el elemento
+		on(getClass()).retrieveEvent(savedEvent.getId())).build(); --> busca el id (primary key) / getClass(si esta en la current class)
+
+	return ResponseEntity.created(uriComponents.encode().toUri()).build(); --> crea la response
+}
+HttpEntity<Void> -> se escribe Void para poner algo dentro de los <>, pero esta vacio
+
+@PutMapping("/{id}") --> http://localhost:8080/events/9
+@ResponseStatus(NO_CONTENT) --> no content porque el metodo es void ("nada puede resultar mal")
+public void updateEvent(@RequestBody Event event, @PathVariable Long id) {
+	service.save(event);
+}
+
+@DeleteMapping("/{id}") --> http://localhost:8080/events/9
+@ResponseStatus(NO_CONTENT)
+public void deleteEvent(@PathVariable Long id) {
+	service.deleteById(id);
+}
+
+
+HTTP1/1 Response: 200 esta bien
+
+$> http -a admin:test POST http://localhost:8080/events/ name=Spring! location='Command Line' --> HTTPie example (agrega un evento con nae y location)
+
+REST template en Spring para escribir --> acceso ilimitado a cualquier Web Service (en C++, C, etc.)
+TestRestTemplate 
+
+public class EventsRestClient {
+
+  private final RestTemplate restTemplate = new RestTemplate(); --> crea el REST Template (service layer)
+  private String url;
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public URI createEvent(String name) {
+    Event event = new Event();
+    event.setName(name);
+
+    return restTemplate.postForLocation(url, event);
+  }
+
+	// DELETE
+  public void deleteEventByLocation(URI location) {
+    restTemplate.delete(location);
+  }
+
+  public void deleteEventById(Long id) {
+    String deletionUrl = url + "/{id}";
+    restTemplate.delete(deletionUrl, id);
+  }
+
+	// GET
+  public void retrieveEvent(URI location) {
+    Event event = restTemplate.getForObject(location, Event.class);
+    System.out.println(event);
+  }
+
+  public void retrieveAllEvents() {
+    Event[] events = restTemplate.getForObject(url, Event[].class); --> Event[] --> jacksonMapper para convertirlo en var "events"
+    for (Event event : events) {
+      System.out.println(event);
+    }
+  }
+
+
+	// USAR RESTCLIENT
+public static void main(String[] args) {
+    EventsRestClient client = new EventsRestClient();
+    client.setUrl("http://localhost:8080/spring/rest/events");
+
+    client.retrieveAllEvents();
+    URI location = client.createEvent("REST Event");
+    client.retrieveEvent(location);
+
+    client.deleteEventById(1L);
+    client.deleteEventByLocation(location);
+    client.retrieveAllEvents();
+}
+
+test: sobre content and response (no mas view or model)
+response: Assert response status: status().isOk()
+content:
+Assert content type: content().contentType("application/json")
+Assert JSON content: jsonPath("$.firstName").value("John")
+
+@Test
+public void retrieveAllEvents() throws Exception {
+	mockMvc.perform(get("/events").accept(APPLICATION_JSON))// --> // es para mantener la indentation, que sea mas clara
+		.andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))//
+		.andExpect(status().isOk())//
+		.andExpect(jsonPath("$[8]").exists())// --> exista la 8va posicion
+		.andExpect(jsonPath("$[?(@.name =~ /Spring I.O/)].location", --> name similar a Spring I.O
+				hasItems("Madrid", "Barcelona")));
+}
+
+

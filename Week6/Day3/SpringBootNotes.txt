@@ -78,6 +78,25 @@ PersistenceExceptionTranslationPostProcessor bean en el @Configuration
 
 pagination: ???
 
+JPA --> porque pones @Repository a la interface y extends JpaRepository<User, Long> --> crea todos los metodos.
+
+Esto:
+@Query("from User u where u.lastName order by firstName = ?1")
+User findFirstByLastName(String lastName);
+
+Es lo mismo que:
+User findFirstByLastNameOrderByFirstName(String lastName);
+
+delete() --> JPA
+assertNums --> JPC
+
+EAGER carga la informacion siempre
+LAZY  solo carga la informacion cuando se la llama
+
+FK = foreign key + numbers --> cuando linkea una tabla con otra
+
+mappedBy = "user" --> con que campo se va a relacionar la tabla
+ validate
 
 
 

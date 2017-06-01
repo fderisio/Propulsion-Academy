@@ -108,18 +108,15 @@ function romanTranslator(letters) {
 //console.log(romanTranslator("MCMLXXXVIII")); // 1988
 //console.log(romanTranslator("XLIX")); // 49
 
+let resultArray = [];
 
 function numTranslator(num) {
 	let valuesList = [];
-	let resultArray = [];
 	let resultArray2 = [];
-	let newNum = 0;
 	for (var key in romanNums) {
-		var rest = num - romanNums[key];
-		if (rest > 0) {
+		if (num - romanNums[key] > 0) {
+			var rest = num - romanNums[key];
 			valuesList.push(romanNums[key]);
-		} else {
-			break;
 		}
 	}
 	console.log(valuesList);
@@ -168,7 +165,7 @@ function numTranslator(num) {
 	//return resultArray2.join();
 }
 
-console.log(numTranslator(140));
+console.log(numTranslator(140)); // CXL
 
 
 

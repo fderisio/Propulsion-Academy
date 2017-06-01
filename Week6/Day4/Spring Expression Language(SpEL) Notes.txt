@@ -1,0 +1,190 @@
+Date: 1.6.2017
+
+Spring Expression Language
+
+Spel expression se usa: @Value(#{XXXXXXXXX})
+
+@Component
+public class Foo {
+
+  private final String bar;
+
+  @Autowired
+  public Foo(@Value("#{ systemProperties['foo'] }") String bar) { --> obtiene informacion desde afuera de la aplicacion, la SpEL expresion, se va a guardar en la variable bar (que es String) 
+    this.bar = bar;
+  }
+
+  public String getBar() {
+    return this.bar;
+  }
+}
+
+Tomcat Servlet en Spring
+
+Websocket: conexion entre el servidor y el browser
+MVC = Model (el texto que hay) View (como se ve) Controller (software)
+
+DispatcherServlet --> comienza el controller
+
+Sping MVC --> Java web framework
+
+Controller:
+mapping
+forms and request --> Data binding
+submit a format and server get the submition --> Form handling
+
+Views:
+JSP = java server pages
+return JSON
+return PDF
+return Excel
+
+@Controller class
+@RequestMapping (optional) --> se debe declarar en uno o mas metodos
+
+Thymeleaf --> hay que implementar la vista
+
+HTTP puede pedir (get, post, put, delete)
+@GetMapping -> arriba de un metodo
+@PostMapping
+@PutMapping
+@DeleteMapping
+
+@Controller
+@RequestMapping("/news/**") --> ** ant style: van a seguir varias palabaras/palabra/vcvcvcv
+public class NewsController {
+
+	private final NewsService service;
+
+	public NewsController(NewsService service) {
+		this.service = service;
+	}
+
+Este metodo le habla al servidor:
+@GetMapping("/events") --> http://mywebsite.com/events/
+public String list(Model model) { --> controller part: model is a map temporario (lo que dure el metodo), el constructor Model built-in en Spring
+	model.addAttribute("events", service.findAll()); --> model part: events es la variable donde se guarda el metodo, se puede llamar siempre
+	return "event/list"; --> view part: escrito como en el template. Selecciona y retorna el tipo de view (thymeleaf) y el model temporario desaparece.
+}
+
+@GetMapping("/details") --> http://example.com/news/details?id=9 (id es el nombre de la variable que se solicita como parametro)
+public String details(@RequestParam Long id, Model model) {
+ 	model.addAttribute("details", service.findById(id));
+    	return "newsDetails";
+}
+
+@GetMapping("/details/{id}") --> http://example.com/news/details/9 (rest applications) {variable String} que se solicita como path y la convierte a Long
+public String details(@PathVariable Long id, Model model) {
+ 	model.addAttribute("details", service.findById(id));
+    	return "newsDetails";
+}
+
+@RequestMapping("/view")
+public String view(@RequestHeader("accept-language") String lang) {
+    // do something with lang ...
+}
+
+@RequestMapping("/view")--> geets value of a cookie
+public String view(@CookieValue("lang") String lang) {
+    // do something with lang ...
+}
+
+@InitBinder --> User object, request fields from object
+
+NumberFormatter --> number configuration (0,10 or 0.10)
+
+@GetMapping("/{day}")
+public String getForDay(@PathVariable @DateTimeFormat(iso=ISO.DATE) LocalDate day, Model model){ --> (ISO = AAAA-MM-DD) 
+
+  DoctorAppointments appointments =
+    appointmentBook.getAppointmentsForDay(day);
+
+  model.addAttribute("doctorAppointmentsMap",
+    appointments.asMap());
+
+  return "appointments";
+}
+http://example.com/appointments/2017-10-31
+
+JSR 303 valida la data que se ingresa: (package javax.validation.constraints) posibilidades: @NotNull, @Min, @Max, @Size, @Before, @After
+
+public class AppointmentForm {
+
+    @NotNull -> obligatorio
+    private Long doctor;
+
+    @NotNull
+    private Long client;
+
+    @NotNull
+    private Long patient;
+
+    @NotNull
+    private LocalDate date = new LocalDate();
+
+    @NotNull
+    private LocalTime time = new LocalTime();
+
+}
+
+@PostMapping
+public String add(@Valid AppointmentForm appointment, BindingResult result) { -> result: variable que guarda si esta validado o no
+
+    // Redisplay form?
+    if (result.hasErrors()) {
+        return "appointments/new";
+    }
+
+    // Save and redirect to appointments page
+    service.addAppointment(appointment);
+    return "redirect:/appointments";
+}
+
+Thymeleaf:
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">--> nombre del URL
+
+<!-- ... -->
+
+<tr th:each="event : ${events}"> --> crea table row, para cada evento hacer lo siguiente -> ${events} como esta en el controller
+	<td><a th:href="@{ '/events/' + ${event.id} }"><span th:text="${event.eventDate}">1999-12-31</span></a></td> -> ${event.id} -> accesa al modelo
+	<td><a th:href="@{ '/events/' + ${event.id} }"><span th:text="${event.name}">Event</span></a></td>
+	<td><a th:href="@{ '/events/' + ${event.id} }"><span th:text="${event.location}">Location</span></a></td>
+</tr>
+
+<!-- ... -->
+
+@GetMapping(/form) -> metodo new Event() --> muestra el form para cargar un evento nuevo
+
+Supported in the path:
+- static -> css
+- dinamic -> sql
+
+Test:
+out of container para Spring MVC and REST Apps
+@WebAppConfiguration and @ContextConfiguration
+@SpringBootTest(webEnvironment = MOCK)(Spring 1.4 +)
+
+Ej:
+@RunWith(SpringRunner.class)
+@SpringEventsWebtest
+
+OR:
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = MOCK) -> adds mock enviroment
+@AutoConfigureMockMvc(print = MockMvcPrint.SYSTEM_ERR)
+@Transactional
+public class EventsControllerTests {
+
+	@Autowired
+	MockMvc mockMvc;
+
+	@Test
+	public void listEvents() throws Exception {
+		mockMvc.perform(get("/")) -> para testear un GetMapping -> .perform
+			.andExpect(view().name("event/list"))-> verifica el view
+			.andExpect(model().attribute("events", hasSize(greaterThan(10)))); -> verifica el model
+	}
+} 

@@ -1,0 +1,85 @@
+Entity: es un solo elemento del OOP domain, tienen una Primary Key, se asocian a otros objetos, esta mapeada en la DB.
+Primary Key puede ser:
+Surrogate: nro ID
+natural ID: nro documento
+Composite Key = first name and last name
+Embedded: compuesto por mas de dos fields (ej. direccion: calle+nro+codpos+ciudad+pais)
+
+BLOB = Binary large object (ej: foto, video - hasta 128 terabytes)
+CLOB = Character large object (hasta 128 terabytes)
+Inheritance  = 
+join
+table per class(cada clase genera una tabla)
+single table(en una tabla se diferencian usuarios por un campo, ej: normal, administrador)
+
+Object Query Language --> reemplaza SQL
+
+unit of work:
+1st level cache: agarra el estado y los cambios hasta que se genere 
+flush: empuja los cambios atrapados en el 1er nivel, pero no los comitea  
+clear: limpia el 1er nivel
+
+entities have a State:
+transient: has no ID
+persistent: has an ID, relacionada con unit of work
+detached: has an ID no esta relacionada con una unit of work
+
+persistencia transitiva: persistencia desde reachability, cuando el objeto tiene datos, se puede: update, save, delete, etc.
+
+Long Running Transactions: cuando el usuario tiene que ingresar informacion en varias paginas. Habra una larga transaccion, guardando la informacion de la pagina anterior.
+
+2nd level chache: obtiene de informacion de base de datos fijas
+
+ORM = object relational mapping
+
+JPA = Java persistence API
+
+to map an entity: class @Entity, define primary key
+
+primary key: @Id, @GeneratedValue
+
+Por lo gral se crea la table con la info de las clases, si se quiere cambiar:
+@Table(name="users") in class: User
+@Column(name=first_name") en field named: firstName
+@Temporal
+@Transient (no esta mapeado, no se guarda en la DB)
+@Enumerated(EnumType.STRING) --> sino se guardan con el orden numerico, en vez de string
+
+Mapping associations:
+- unidirectional: n to 1 
+
+- bidirectional: 1 to n
+una categoria de producto tiene varios productos.
+
+Fetching strategies se declara dentro de: @OneToMany(XXXXXXXX)
+
+Persistencia transitiva permite guardar y eliminar un objeto completo.
+Ejemplo:
+Dog dog = new Dog("Wolfie");
+PetOwner petOwner = new PetOwner("Bob", dog);
+
+entityManager.persist(petOwner); // Both the PetOwner & the Dog are persisted.
+
+entityManager.remove(petOwner); // Both the PetOwner & the Dog are deleted.
+
+lazy --> genera el campo hasta que se lo llama y no antes
+
+:location en vez de ? (String query = "from Event e where e.location = :location";
+
+
+... factory.setPackagesToScan("org.example.app"); --> componentScan
+
+@PersistenceContext instead of @Autowired --> ej: para crear el entitymanager en el repository
+
+PersistenceExceptionTranslationPostProcessor bean en el @Configuration
+
+
+@Query (XXXXX) --> define el query si hay muchos filtros
+
+pagination: ???
+
+
+
+
+
+

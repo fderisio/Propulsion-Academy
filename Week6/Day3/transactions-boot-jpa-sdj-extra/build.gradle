@@ -1,0 +1,67 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'transactions-boot-jpa-sdj'
+	version = '1.0.0-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext.log4jVersion   = '2.8.2'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly('org.projectlombok:lombok')
+
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+	compile("org.apache.logging.log4j:log4j-api:${log4jVersion}")
+	runtime("org.apache.logging.log4j:log4j-core:${log4jVersion}")
+
+	runtime('com.h2database:h2')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+task showMeCache {
+	doLast {
+		println('compileOnly dependencies:')
+		configurations.compileOnly.each { println it }
+		println('compile dependencies:')
+		configurations.compile.each { println it }
+		println('runtime dependencies:')
+		configurations.runtime.each { println it }
+		println('testCompile dependencies:')
+		configurations.testCompile.each { println it }
+	}
+}
+
+eclipse.project {
+	natures 'org.springframework.ide.eclipse.core.springnature'
+	buildCommand 'org.springframework.ide.eclipse.core.springbuilder'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.5'
+}

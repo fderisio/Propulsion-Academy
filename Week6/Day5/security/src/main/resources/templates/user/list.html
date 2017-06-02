@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="global/meta :: meta">
+	<title>Users</title>
+</head>
+
+<body>
+	<div id="pagemargin">
+		<div th:replace="global/header :: header" />
+
+		<div id="content">
+			<table>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Age</th>
+				</tr>
+
+				<tr th:each="user : ${users}">
+					<td><a th:href="@{ '/users/' + ${user.id} }"><span th:text="${user.firstName}">First Name</span></a></td>
+					<td><a th:href="@{ '/users/' + ${user.id} }"><span th:text="${user.lastName}">Last Name</span></a></td>
+					<td><a th:href="@{ '/users/' + ${user.id} }"><span th:text="${user.age}">Age</span></a></td>
+				</tr>
+
+			</table>
+		</div><!-- END content -->
+
+		<div class="clear"></div><br />
+		<div class="bar"></div>
+	</div><!-- END pagemargin -->
+	<div th:replace="global/footer :: footer" />
+</body>
+</html>

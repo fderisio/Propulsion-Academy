@@ -52,7 +52,7 @@ public class RestUserController {
 	}
 	
 	@PutMapping("/{id}")
-	@ResponseStatus(code=NO_CONTENT) // = @ResponseStatus(NO_CONTENT)
+	@ResponseStatus(code=NO_CONTENT) // = @ResponseStatus(NO_CONTENT) --> porque es void method
 	public void updateUser(@RequestBody User user, @PathVariable Long id) {
 		userService.save(user);
 	}

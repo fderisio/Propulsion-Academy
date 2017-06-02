@@ -3,7 +3,6 @@ package user.web;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -45,8 +44,8 @@ public class RestUserControllerTests {
 			.andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))//
 			.andExpect(status().isOk())//
 			.andExpect(jsonPath("$[2]").exists())//
-			.andExpect(jsonPath("$[?(@.lastName =~ /Smith/)].firstName", hasItems("John", "Emma")))//
-			.andExpect(jsonPath("$[?(@.firstName =~ /J.+/)].firstName", hasItems("John", "Jane", "Josh")));
+			.andExpect(jsonPath("$[?(@.lastName =~ /Smith/)].firstName", hasItems("John", "Emma")))// @ = for each / .+ --> from Perl
+			.andExpect(jsonPath("$[?(@.firstName =~ /J.+/)].firstName", hasItems("John", "Jane", "Josh"))); // . = anything, + = at least anything
 	}
 	
 //	@GetMapping("/{id}")

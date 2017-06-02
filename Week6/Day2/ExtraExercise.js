@@ -76,7 +76,7 @@ function twoAdds(num) {
 // Extra credit: write a second function that takes
 // a number as input and returns its roman numeral.
 
-let romanNums = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000};
+//let romanObj = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000};
 
 function romanTranslator(letters) {
 	let lettersArray = letters.split("");
@@ -104,68 +104,72 @@ function romanTranslator(letters) {
 	return result;
 }
 
-//console.log(romanTranslator("XIV")); // 14
-//console.log(romanTranslator("MCMLXXXVIII")); // 1988
-//console.log(romanTranslator("XLIX")); // 49
+// console.time('someFunction');
+// console.log(romanTranslator("MMDCCCXCIV"));//2894
+// console.timeEnd('someFunction');
 
+function romanTranslator(letters) {
+	let lettersArray = letters.split("");
+	let result = 0;
+
+	// for (let i=0; i<lettersArray.length; i++) {
+	// 	if (lettersArray.indexOf(lettersArray[i]) !== lettersArray.length-1) {
+	// 		if (romanNums[lettersArray[i]] < romanNums[lettersArray[i+1]]) {
+	// 			result = romanNums[lettersArray[i+1]] - romanNums[lettersArray[i]] + result;
+	// 			i++;
+	// 		} else {
+	// 			result += romanNums[lettersArray[i]];
+	// 		}
+	// 	}
+	// }
+
+	for (let i=0; i<lettersArray.length; i++) {
+		if (lettersArray.indexOf(lettersArray[i]) !== lettersArray.length-1) {
+			if (romanNums[lettersArray[i]] < romanNums[lettersArray[i+1]]) {
+				result = romanNums[lettersArray[i+1]] - romanNums[lettersArray[i]] + result;
+				i++;
+			} else {
+				result += romanNums[lettersArray[i]];
+			}
+		}
+	}
+
+	return result;
+}
+
+// console.log(romanTranslator("XIV")); // 14
+// console.log(romanTranslator("MCMLXXXVIII")); // 1988
+// console.log(romanTranslator("XLIX")); // 49
+
+//let numsArray = { "1":"I", "4":"IV", "5":"V", "9":"IX", "10":"X", "40":"XL", "50":"L", "90":"XC", "100":"C", "400":"CD", "500":"D", "900":"CM", "1000":"M" };
+let romanNums = {1:"I", 4:"IV", 5:"V", 9:"IX", 10:"X", 40:"XL", 50:"L", 90:"XC", 100:"C", 400:"CD", 500:"D", 900:"CM", 1000:"M" };
+let romanObj = {"I":1, "IV":4, "V":5, "IX":9, "X":10, "XL":40, "L":50, "XC":90, "C":100, "CD":400, "D":500, "CM":900, "M":1000 };
 let resultArray = [];
 
 function numTranslator(num) {
 	let valuesList = [];
-	let resultArray2 = [];
-	for (var key in romanNums) {
-		if (num - romanNums[key] > 0) {
-			var rest = num - romanNums[key];
-			valuesList.push(romanNums[key]);
+
+	for (var key in romanObj) {
+		if (num - romanObj[key] >= 0) {
+			var rest = num - romanObj[key];
+			valuesList.push(romanObj[key]);
 		}
 	}
-	console.log(valuesList);
-	var max = Math.max.apply(null, valuesList);
-	resultArray.push(max);
-	console.log(resultArray);
-	console.log(rest);
+
+	let max = Math.max.apply(null, valuesList);
+	resultArray.push(romanNums[max]);
+	
 	if (rest > 0) {
-		console.log("hola");
 		numTranslator(rest);
 	}
-	
-	// for (let i=0; i<resultArray.length; i++) {
-	// 	Object.keys(romanNums).forEach(function(key,index) {
-	// 		if (resultArray[i] === romanNums[key]) {
-	// 			resultArray2.push(key);
-	// 			console.log(resultArray2);
-	// 		}
-	// 	});
-	// }
 
-
-	// let resultArray2 = [];
-	// Object.keys(romanNums).forEach(function(key,index) {
-	// 	//let value = num / romanNums[key];
-	// 	let rest = num - romanNums[key];
-		
-	// 	//let rest = 100;
-	// 	//let rest = num % romanNums[key];
-	// 	//console.log(romanNums[key])
-	// 	console.log(rest);
-	// 	if (rest > 0) {
-	// 		resultArray.push(romanNums[key]);
-	// 	}
-	// 	resultArray2.push(resultArray.length-1);
-	// 	// while (rest > 0) {
-	// 	// 	let value = romanNums[key];
-	// 	// 	console.log(value);
-	// 	// 	if (rest === romanNums[key]) {
-	// 	// 		resultArray.push(key);
-	// 	// 	}
-	// 	// }
-		
-	// });
-	// //return value;
-	//return resultArray2.join();
+	return "The " + num + " in roman numbers is " + resultArray.join("");
 }
 
-console.log(numTranslator(140)); // CXL
-
+//console.log(numTranslator(1490)); // MCDXC
+//console.log(numTranslator(1988)); // MCMLXXXVIII
+console.time('someFunction');
+console.log(numTranslator(2894)); // MCDXLII
+console.timeEnd('someFunction');
 
 

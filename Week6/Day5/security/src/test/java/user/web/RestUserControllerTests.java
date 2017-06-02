@@ -45,7 +45,7 @@ public class RestUserControllerTests {
 			.andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))//
 			.andExpect(status().isOk())//
 			.andExpect(jsonPath("$[2]").exists())//
-			.andExpect(jsonPath("$[?(@.lastName =~ /Smith/)].firstName", hasItems("John", "Emma")))//
+			.andExpect(jsonPath("$[?(@.lastName =~ /Smith/)].firstName", hasItems("John", "John")))//
 			.andExpect(jsonPath("$[?(@.firstName =~ /J.+/)].firstName", hasItems("John", "Jane", "Josh")));
 	}
 	
@@ -84,7 +84,7 @@ public class RestUserControllerTests {
 //	}
 	
 	@Test
-	@WithMockUser (roles = "USER")
+	@WithMockUser (roles = "USER") // porque lo pide el service
 	public void createUser() throws Exception{
 		String json = "{\"first"+ "Name\": \"Juancito\", \"lastName\": \"Perez\", \"age\": 37}";
 		mockMvc.perform(post("/users/").contentType(APPLICATION_JSON)//
@@ -99,6 +99,7 @@ public class RestUserControllerTests {
 //	}
 	
 	@Test
+	@WithMockUser (roles = "USER")
 	public void updateUser() throws Exception {
 		String json = "{\"id\": 1, \"firstName\": \"John\", \"lastName\": \"Smith\", \"age\": 32}";
 		

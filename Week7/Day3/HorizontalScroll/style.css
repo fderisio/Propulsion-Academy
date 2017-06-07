@@ -1,0 +1,50 @@
+/** {
+	border: 1px solid black;
+}*/
+
+body {
+	text-align: center;
+
+}
+
+.wrapper {
+	width: 375px;
+	overflow: hidden;
+	white-space: nowrap;
+	display: inline-block; /* permite colocar objetos a la derecha e izq (display block: no) */
+	z-index: 2;
+}
+
+.item {
+	display: inline-block;
+	height: 150px;
+	width: 90px; 
+	background-color: #B5095F;
+}
+
+.item:hover {
+    background-color: #ccc; /* Dark grey background on mouse-over */
+}
+
+.horizontal-scroll { 
+	/*transform: rotate(-90deg) translateY(-100px);
+	transform-origin: right top;*/
+	transition: all 1s ease;
+}
+
+#rightButton, #leftButton {
+	height: 150px;
+	width: 20px;
+	position: absolute;
+	z-index: 1;
+}
+
+#leftButton {
+	left: 0;
+}
+.scroll {
+	height: 150px;
+	width: 420px;
+	display: inline-block;
+	position: relative;
+}

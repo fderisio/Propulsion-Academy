@@ -1,0 +1,48 @@
+h1 {
+	position: inline-block; // prepara todos los objetos en la misma linea (ej. pelis Netflix)
+	position: static; // normal
+	position: relative;
+	top: 100px; // solo en un objeto
+	left: 50px; // relativo a la posicion inicial
+}
+
+h2 {
+	position: absolut; // solo ese elemento toma esa posicion y los otros se alinean
+	top: 100px; // solo en un objeto
+	left: 50px; // relativo a la posicion inicial
+	background-color: peachpuff;
+
+	position: fixed; // lleva el elemento a los bordes
+	top: 0px; // se pega a arriba
+	left: 0px;
+
+	float: left; // (or right), usar esto o position: fixed, nunca los dos
+}
+
+.container {
+	width: 70%;
+	margin: 50px auto; // auto lo centra
+	white-space: nowrap; // pone el contenido solo en una linea
+	overflow-x: hidden; // lo que sobresale del conteiner
+	
+}
+
+.horizontal-scroll {
+	transform: translateX(200px); // mueve el tamaño del container (SE AGREGA EN JS!!!!!! NO CSS)
+	transition: all 2s ease; // funcion de transicion que mueve el translateX
+	transition: transform 2s ease;
+}
+/* 
+box -> div
+
+align-items: verticalmente;
+justify-content: horizontal;
+flex-direction: direccion en el container; (reverse por ej) / row / row-reverse / column / column-reverse
+order: nro; cambia el orden de un solo elemento (-3 para moverlo para atras de donde esta, donde esta es 0)
+align-self: alinea solo un objeto; flex-start / flex-end / center / baseline / stretch
+flex-wrap: nowrap, wrap, wrap-reverse;
+
+flex-flow: <flex-direction> <flex-wrap>; / column wrap;
+align-content: como justify-content;
+
+

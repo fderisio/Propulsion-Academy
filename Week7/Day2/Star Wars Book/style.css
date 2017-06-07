@@ -1,0 +1,58 @@
+body {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  padding: 2em;
+  background-color: white; /*whitesmoke;*/
+  text-align: center;
+}
+
+h1 {
+	border-top-width: 1px;
+	font-size: 2.5em;
+}
+
+.column {
+  border: 5px solid pink;
+  border-radius: 5px;
+  float: left;
+  margin: 0 5px;
+  min-height: 300px;
+  padding: 10px;
+  width: 20%;
+}
+
+#container {
+	position: relative;
+	top: 30px;
+	/*outline:2px solid #000;
+	font-size: 0;*/
+	margin:auto;
+	/*height:250px;
+	width:250px;*/
+	padding: 0;
+	border: none;
+}
+
+#films-list {
+	border:1px solid #000;
+	/*outline:1px solid #000;*/
+	display:inline-block;
+}
+
+#starships-list {
+	border:1px solid #000;
+	/*outline:1px solid #000;*/
+	display:inline-block;
+}
+
+#pilots-list {
+	border:1px solid #000;
+	/*outline:1px solid #000;*/
+	display:inline-block;
+}
+.cell:active {
+	background-color: black;
+	border:1px solid red;
+	/*outline:1px solid #000;*/
+	display:inline-block;
+}
+

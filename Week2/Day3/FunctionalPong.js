@@ -30,21 +30,20 @@ function drawBackground() {
 function drawPaddles() {
 	let paddleWidth = 8;
 	let paddleHeight = 55;
+	
 	// Paddle 1
-
 	ctx.beginPath();
 	ctx.fillStyle = 'silver';
 	ctx.fillRect(paddle1Position[0], paddle1Position[1], paddleWidth, paddleHeight); //fillrect(x, y, paddleWidth, height);
 	ctx.fill();
 
 	// Paddle 2
-
 	ctx.beginPath();
 	ctx.fillStyle = 'silver';
 	ctx.fillRect(paddle2Position[0], paddle2Position[1], paddleWidth, paddleHeight); //fillrect(x, y, paddleWidth, height);
 	ctx.fill();
 
-		// Keys pressed
+	// Keys pressed
 	let rightPressed1;
 	let leftPressed1;
 	let rightPressed2;

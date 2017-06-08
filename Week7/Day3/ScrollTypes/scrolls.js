@@ -4,8 +4,7 @@ const ready = () => {
 	let scrollSlider = 0;
 	let count = 2;
 	$('#slider-left').on('click', () => {
-		scrollSlider += 1041;
-		console.log(scroll)
+		scrollSlider += 1021;
 		count++;
 		if (scrollSlider > 2040) {
 			scrollSlider = scrollSlider;
@@ -15,7 +14,7 @@ const ready = () => {
 		$('.slider-scroll').css('transform', result);
 	})
 	$('#slider-right').on('click', () => {
-		scrollSlider -= 1041;
+		scrollSlider -= 1021;
 		count++;
 		console.log(scroll)
 		if (scrollSlider === -1564) {
@@ -28,6 +27,7 @@ const ready = () => {
 	// horizontal scroll
 	let scroll = 0;
 	//scroll = parseInt($('.wrapper').css('width').replace(/[px]/g, ""));
+	console.log(parseInt($('.item').css('width')) + parseInt($('.item').css('margin-right')) + (parseInt($('#rightButton').css('width')) * 2));
 	console.log(scroll)
 	let result;
 	$('#leftButton').on('click', () => {

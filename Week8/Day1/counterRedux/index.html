@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+  	<title>Counter in Redux</title>
+  	<script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  	<!-- This will create the Redux global variable. You are going to use Redux.createStore to create the Redux Store. -->
+
+</head>
+
+<body>
+
+	<button id='restButton'>-</button>
+	<p id='result'></p>
+	<button id='sumButton'>+</button>
+	<div className='NewToDo'>
+		<div>
+			<input type='text' id='newToDo' placeholder='Enter the new task here'/> 
+			<button id='addTask'>Add task</button>
+		</div>
+	</div>
+	<div id="toDoList"></div>
+	<button id='removeButton'>Remove All tasks</button>
+
+	<script src='./Reducers/counterReducer.js'> </script>
+	<script src='./Reducers/toDosReducer.js'> </script>
+	<script src='./index.js'> </script>
+</body>
+
+</html>

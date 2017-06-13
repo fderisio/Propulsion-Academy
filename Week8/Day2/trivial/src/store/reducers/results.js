@@ -8,6 +8,10 @@ const results = (state=0, action) => {
 			} else {
 				return newState;
 			}
+		case 'playAgain':
+			let newState2 = state;
+			newState2 = 0;
+			return newState2;
 		default:
 			return state;
 	}

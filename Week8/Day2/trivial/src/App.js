@@ -12,7 +12,7 @@ import { addAnswersCreator } from './store/actions';
 class App extends Component {
   
   componentDidMount() {
-    fetch('https://opentdb.com/api.php?amount=3')
+    fetch('https://opentdb.com/api.php?amount=1')
       .then(res => res.json())
       .then(data => {
         //console.log('fetched data', data)
@@ -55,12 +55,12 @@ class App extends Component {
               isCorrect: false
             };
             answersArray.push(newIncorrectAnswer)
-            const newCorrectAnswer = {
-              id: 2,
-              text: question.correct_answer,
-              isCorrect: true
-            };
-            answersArray.push(newCorrectAnswer)
+            // const newCorrectAnswer = {
+            //   id: 2,
+            //   text: question.correct_answer,
+            //   isCorrect: true
+            // };
+            // answersArray.push(newCorrectAnswer)
           }
           //console.log(newCorrectAnswer)
           return answersArray;
@@ -93,6 +93,7 @@ class App extends Component {
 
   render() {
     const questionId = this.props.match.params.order;
+    console.log(questionId)
     if (this.props.question.length === 0) {
         return <h4> Preaparing the questions for you... </h4>
     }

@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import '../../App.css';
 import Header from '../Header';
 import Footer from '../Footer';
+import { ceroScore } from '../../store/actions';
 
 class Results extends React.Component {
 
 	startAgainButton = (results) => {
     	this.props.history.push('/');
+        this.props.dispatch(ceroScore())
   	}
 
 	render() {

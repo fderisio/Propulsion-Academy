@@ -14,7 +14,8 @@ class Home extends Component {
       <div className="App">
         <Header />
         <h2> Welcome to the new trivia game lauched by Fiorella Inc.! </h2>
-        <h5> Press Start when you are ready to play </h5>
+        <input type="text" placeholder="Enter your name" name="userName" />
+        <h5> Press Start when you are ready</h5>
         <button onClick={ this.startButton }>Start!</button>
         <Footer />
       </div> 
@@ -25,3 +26,6 @@ class Home extends Component {
 
 
 export default Home;
+
+// <p>Enter your name here: </p> 
+//         <input style="text" placeholder="Enter your name"> </input>

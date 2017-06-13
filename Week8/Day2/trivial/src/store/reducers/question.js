@@ -9,13 +9,11 @@ const questions = (state=initialState, action) => {
 	switch (action.type) {
 		case 'addQuestion':
 			const newState = state;
-			console.log(state)
 			newState.push(action.question);
 			return newState;
 		default:
 			return state;
 	}
-	return state;
 }
 
 export default questions;

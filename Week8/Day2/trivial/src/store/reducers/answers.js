@@ -19,13 +19,11 @@ const answers = (state=initialState, action) => {
 	switch (action.type) {
 		case 'addAnswers':
 			const newState = state;
-			console.log(state)
 			newState.push(action.answer);
 			return newState;
 		default:
 			return state;
 	}
-	return state;
 }
 
 export default answers;

@@ -27,9 +27,10 @@ class App extends Component {
         });
         
         // fetch answers
-        let newIndex = 1;
+        //let newIndex = 1;
         const answers = data.results.map((question, index) => { // array of objects
           let answersArray = [];
+          
           // multiple choice answer
           for (let i=0; i<question.incorrect_answers.length; i++) {
             const newIncorrectAnswer = {
@@ -62,9 +63,9 @@ class App extends Component {
             answersArray.push(newCorrectAnswer)
           }
           //console.log(newCorrectAnswer)
-          //return answersArray;
-          return [newIndex] = answersArray;
-          newIndex++;
+          return answersArray;
+          //return {newIndex] = answersArray;
+          //newIndex++;
       });
       //console.log('answers', answers)
     
@@ -92,6 +93,9 @@ class App extends Component {
 
   render() {
     const questionId = this.props.match.params.order;
+    if (this.props.question.length === 0) {
+        return <h4> Preaparing the questions for you... </h4>
+    }
     //console.log('answers[1]', this.props.answers[0])
     return (
       <div className = "App">

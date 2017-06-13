@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { addResultCreator } from '../../store/actions';
 import '../../App.css';
 
@@ -20,8 +19,9 @@ class Answers extends React.Component {
 		console.log('answers', answers)
 		return (
 			<ul> {
-				answers.forEach((answer) => {
-					<li key={answer.id} className="App" onClick={ () => this.checkAnswer(answer.isCorrect) }>{ answer.text }</li>
+				answers.forEach(answer => {
+					console.log(answer)
+					
 				})
 			}
 			</ul>
@@ -38,4 +38,5 @@ export default Answers;
 // 					<li key={answer.id} className="App" onClick={ () => this.checkAnswer(answer.isCorrect) }>{answer.text}</li>
 // 				)
 
-// 
+					//return <li key={answer.id} className="App" onClick={ () => this.checkAnswer(answer.isCorrect) }>{ answer.text }</li>;
+// <div> holaaaaaa </div>

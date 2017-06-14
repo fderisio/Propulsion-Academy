@@ -16,22 +16,21 @@ const MenuBar = () => (
     title="Menu"
     className="MenuBar"
     style={ styles }
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-	//iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+    //iconClassNameRight="muidocs-icon-navigation-expand-more"
+		//iconElementLeft={<IconButton><NavigationClose /></IconButton>}
     //showMenuIconButton= {true}
   >
     <IconMenu
-    iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'center'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'center'}}
-  >
-    <MenuItem primaryText="Feed" />
-    <MenuItem primaryText="Profile" />
-    <MenuItem primaryText="Help" />
-    <MenuItem primaryText="Sign out" />
-  </IconMenu>
+    iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }
+    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+    iconStyle={{ 'color': 'white', 'align': 'center'}}
+  	>
+	    <MenuItem primaryText="Feed" />
+	    <MenuItem primaryText="Profile" />
+	    <MenuItem primaryText="Users" />
+	    <MenuItem primaryText="Sign out" />
+  	</IconMenu>
   </AppBar>
  );
 

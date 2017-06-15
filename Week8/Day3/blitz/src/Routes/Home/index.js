@@ -1,20 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchFeed } from '../../store/actions';
 
 import Header from '../../components/Header';
+import FeedItem from '../../components/FeedItem';
 import Footer from '../../components/Footer';
 
 class Home extends Component {
+  
+  componentDidMount = () => {
+    this.props.dispatch(fetchFeed());
+  }
+
+  nextPage = (value) => { this.props.history.push(value); };
+
   render() {
+    const feed = this.props.feed;
+    console.log('feed', feed)
+    if (Object.keys(feed).length === 0) {
+      return <p> Loading home page... </p>
+    }
+  	
     return (
       <div className="App">
-        <Header />
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header nextPage = {this.nextPage} />
+        <div>
+        { feed.map((feedItem, index) => <FeedItem key={index} feedItem={feedItem} />)}
+        </div>
         <Footer />
       </div>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return state;
+}
+
+export default connect(mapStateToProps)(Home);

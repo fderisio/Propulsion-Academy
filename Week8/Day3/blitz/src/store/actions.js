@@ -1,34 +1,61 @@
 export const setCurrentUserCreator = (user) => {
 	return {
-	type: 'setUser',
-	user
+		type: 'setUser',
+		user
+	}
 }
+export const setFeed = (feed) => {
+	return {
+		type: 'setFeed',
+		feed
+	}
+}
+export const logOutUser = () => {
+	return {
+		type: 'logOut'
+	}
 }
 
-export const loginCreator = (email, password) => (dispatch, getState) => {
+// POST request
+export const login = (email, password) => (dispatch, getState) => {
 	const headers  = new Headers({ 'Content-Type': 'application/json' })
 	const body = { email: email, password: password };
 
-	// because fetch() needs a config
 	const config = { 
 		headers: headers, // tells the fetch which format is (in this case Json)
 		method: 'POST', 
 		body: JSON.stringify(body) }; 
 
-	fetch('https://propulsion-blitz.herokuapp.com/api/login', config)
+	return fetch('https://propulsion-blitz.herokuapp.com/api/login', config)
 		.then(res => res.json())
 		.then(user => {
-			const action = setCurrentUserCreator(user);
-			dispatch(action);
+			console.log(user)
+			if (!user._id) {
+				return 'not found';
+			} else {
+				const action = setCurrentUserCreator(user);
+				dispatch(action);
+				localStorage.setItem('token', user.token);
+				localStorage.setItem('username', user.username);
+				localStorage.setItem('avatar', user.avatar);
+				return 'user found';
+			}
 		}) 
 		.catch(err => {
 			console.log('an error ocurred', err);
-		})	
+		})
 }
 
+export const fetchLocalUser = () => (dispatch) => {
+  const userStr = localStorage.getItem('user');
+  if (userStr) {
+    const user = JSON.parse(userStr);
+    dispatch(setCurrentUserCreator(user)); // dispatching an action to save it to Redux Store
+  }
+}
 
-// --> para llamarlo: this.props.dispatch(this.props.ferchFeed())
-export const fetchFeedCreator = () => (dispatch, getState) => { 
+// GET --> para llamarlo: this.props.dispatch(this.props.fetchFeed())
+export const fetchFeed = () => (dispatch, getState) => { 
 	const currentUser = getState().currentUser;
 	const headers  = new Headers({ 
 		Authorization: `Bearer ${currentUser.token}`
@@ -38,7 +65,7 @@ export const fetchFeedCreator = () => (dispatch, getState) => {
 	fetch('https://propulsion-blitz.herokuapp.com/api/feed', config)
 		.then(res => res.json())
 		.then(feed => {
-			const action = setCurrentUserCreator(feed);
+			const action = setFeed(feed);
 			dispatch(action)
 		}) 
 		.catch(err => {
@@ -46,4 +73,21 @@ export const fetchFeedCreator = () => (dispatch, getState) => {
 		})
 }
 
-// 	fetch(`${devUrl}/api/feed`, config)
+// GET --> para llamarlo: this.props.dispatch(this.props.fetchFeed())
+export const fetchProfile = () => (dispatch, getState) => { 
+	const currentUser = getState().currentUser;
+	const headers  = new Headers({ 
+		Authorization: `Bearer ${currentUser.token}`
+	});
+	const config = { headers: headers };
+
+	fetch('https://propulsion-blitz.herokuapp.com/api/me', config)
+		.then(res => res.json())
+		.then(profile => {
+			const action = setCurrentUserCreator(profile);
+			dispatch(action)
+		}) 
+		.catch(err => {
+			console.log('an error ocurred', err);
+		})
+}

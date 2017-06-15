@@ -17,15 +17,21 @@ class Home extends Component {
   render() {
     const feed = this.props.feed;
     console.log('feed', feed)
+
+    // if there are not feeds yet
     if (Object.keys(feed).length === 0) {
       return <p> Loading home page... </p>
     }
   	
+    // home display
     return (
       <div className="App">
-        <Header nextPage = {this.nextPage} />
-        <div>
-        { feed.map((feedItem, index) => <FeedItem key={index} feedItem={feedItem} />)}
+        <Header nextPage = {this.nextPage} /><br/>
+        <div className="Body">
+          <p className="Title">Check what you missed!</p><br/>
+          <div>
+              { feed.map((feedItem, index) => <FeedItem key={index} feedItem={feedItem} />)}
+          </div>
         </div>
         <Footer />
       </div>

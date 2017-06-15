@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import IconButton from 'material-ui/IconButton';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import ActionAndroid from 'material-ui/svg-icons/action/android';
 
 class FeedItem extends Component {
+
+  getFeedAge = () => {
+  }
 
   render() {
     const feed = this.props.feedItem;
     const feedAuthor = this.props.feedItem._user;
-    console.log(feed)
+    const feedCreation = this.props.feedItem.created_at;
+    const time = Math.floor(((new Date().getTime() - new Date(feedCreation))/ (1000*60*60*24))) + " days";
+
+    //console.log(feed)
     return (
-        <Card>
-          <CardHeader title={ feedAuthor.username } avatar={ feedAuthor.avatar } />,
-          <CardText>{ feed.content }</CardText>,
+        <Card
+        expandable={false}
+        >
+          <CardHeader title={ feedAuthor.username } avatar={ feedAuthor.avatar }  subtitle={ time }/>,
+          <CardText expandable={false}>{ feed.content }</CardText>,
           <CardActions>
-            <FlatButton label="Like" />
+            <FlatButton label="Like" icon={<StarBorder color="black"/>} />
             <FlatButton label="unfollow" />
           </CardActions>,
         </Card>
@@ -23,7 +34,7 @@ class FeedItem extends Component {
 }
 
 export default FeedItem;
- //subtitle="Subtitle"
+
 // <CardMedia
 //             overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
 //           >

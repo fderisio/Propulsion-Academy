@@ -27,17 +27,6 @@ class Header extends Component {
     this.props.nextPage('/');
   };
 
-  // pageName = () => {
-  //   if ( this.props.match.url === '/feed') {
-  //     console.log('holaaaa')
-  //     return 'Feed';
-  //   } else if ( this.props.match.url === '/likes') {
-  //     return 'Likes';
-  //   } else if ( this.props.match.url === '/users') {
-  //     return 'Users List';
-  //   }
-  // }
-
   render() {
     const currentUser = this.props.currentUser;
     return (
@@ -46,7 +35,7 @@ class Header extends Component {
           <AppBar
               title= {currentUser.username}
               className="MenuBar"
-              style={ { 'textAlign':'right', 'backgroundColor': '#0EEDAE' } }
+              style={ { 'textAlign':'left', 'backgroundColor': '#0EEDAE' } }
               showMenuIconButton= {false}
               //iconClassNameRight="muidocs-icon-navigation-expand-more"
               //iconElementLeft={<IconButton><NavigationClose /></IconButton>}

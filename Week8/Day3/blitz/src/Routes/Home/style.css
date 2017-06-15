@@ -2,11 +2,8 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-intro {
-  font-size: large;
+.Body {
+	text-align: center;
+	margin:50px auto;
+  	width: 70%;
 }

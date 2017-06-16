@@ -4,6 +4,10 @@
 
 .Body {
 	text-align: center;
-	margin:50px auto;
-  	width: 70%;
+	margin: 2px auto;
+  	width: 50%;
+}
+
+Card {
+	border-color: red;
 }

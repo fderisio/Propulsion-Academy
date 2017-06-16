@@ -10,6 +10,18 @@ export const setFeed = (feed) => {
 		feed
 	}
 }
+export const setUsers = (usersArray) => {
+	return {
+		type: 'setUsers',
+		usersArray
+	}
+}
+export const addBlitz = (blitz) => {
+	return {
+		type: 'addBlitz',
+		blitz
+	}
+}
 export const logOutUser = () => {
 	return {
 		type: 'logOut'
@@ -86,6 +98,74 @@ export const fetchProfile = () => (dispatch, getState) => {
 		.then(profile => {
 			const action = setCurrentUserCreator(profile);
 			dispatch(action)
+		}) 
+		.catch(err => {
+			console.log('an error ocurred', err);
+		})
+}
+
+export const fetchUsers = () => (dispatch, getState) => { 
+	const currentUser = getState().currentUser;
+	const headers  = new Headers({ 
+		Authorization: `Bearer ${currentUser.token}`
+	});
+	const config = { headers: headers };
+
+	fetch('https://propulsion-blitz.herokuapp.com/api/users', config)
+		.then(res => res.json())
+		.then(users => {
+			const action = setUsers(users);
+			dispatch(action);
+		}) 
+		.catch(err => {
+			console.log('an error ocurred', err);
+		})
+}
+
+export const postBlitz = (content) => (dispatch, getState) => { 
+	const currentUser = getState().currentUser;
+	const headers  = new Headers({ 
+		'Content-Type': 'application/json',
+		Authorization: `Bearer ${currentUser.token}`
+	})
+	const body = { content: content };
+
+	const config = { 
+		headers: headers, // tells the fetch which format is (in this case Json)
+		method: 'POST', 
+		body: JSON.stringify(body) }; 
+
+	fetch('https://propulsion-blitz.herokuapp.com/api/blitzs', config)
+		.then(res => res.json())
+		.then(blitzs => {
+			console.log('blitzs', blitzs)
+			const action = addBlitz(blitzs);
+			dispatch(action);
+		}) 
+		.catch(err => {
+			console.log('an error ocurred', err);
+		})
+}
+
+export const likeBlitz = (content) => (dispatch, getState) => { 
+	const currentUser = getState().currentUser;
+	const headers  = new Headers({ 
+		'Content-Type': 'application/json',
+		Authorization: `Bearer ${currentUser.token}`
+	})
+	const body = { content: content };
+
+	const config = { 
+		headers: headers, // tells the fetch which format is (in this case Json)
+		method: 'POST', 
+		body: JSON.stringify(body) }; 
+
+	fetch('https://propulsion-blitz.herokuapp.com/api/feed', config)
+		.then(res => res.json())
+		.then(feed => {
+			console.log('feed', feed)
+			const action = likeBlitz(feed._id);
+			dispatch(action);
 		}) 
 		.catch(err => {
 			console.log('an error ocurred', err);

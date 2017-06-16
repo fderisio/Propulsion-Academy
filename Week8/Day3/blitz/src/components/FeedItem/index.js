@@ -7,24 +7,25 @@ import ActionAndroid from 'material-ui/svg-icons/action/android';
 
 class FeedItem extends Component {
 
-  getFeedAge = () => {
-  }
-
   render() {
+    // extra variables
     const feed = this.props.feedItem;
     const feedAuthor = this.props.feedItem._user;
     const feedCreation = this.props.feedItem.created_at;
-    const time = Math.floor(((new Date().getTime() - new Date(feedCreation))/ (1000*60*60*24))) + " days";
+
+    // calculates feed age
+    const time = Math.floor(((new Date().getTime() - new Date(feedCreation))/ (1000*60*60*24)));
+    const feedAge = (time === 1) ? time + " day" : time + " days";
 
     //console.log(feed)
     return (
         <Card
         expandable={false}
         >
-          <CardHeader title={ feedAuthor.username } avatar={ feedAuthor.avatar }  subtitle={ time }/>,
+          <CardHeader title={ feedAuthor.username } avatar={ feedAuthor.avatar }  subtitle={ feedAge }/>,
           <CardText expandable={false}>{ feed.content }</CardText>,
           <CardActions>
-            <FlatButton label="Like" icon={<StarBorder color="black"/>} />
+            <FlatButton label="like" icon={<StarBorder color="black"/>} />
             <FlatButton label="unfollow" />
           </CardActions>,
         </Card>

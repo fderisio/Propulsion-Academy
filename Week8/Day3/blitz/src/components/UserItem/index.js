@@ -10,9 +10,11 @@ class UserItem extends Component {
   constructor(props) {
     super(props);
     this.state={
+      
       isFollowed: true
     }
   }
+
   render() {
     // extra variables
     const username = this.props.userItem.username;

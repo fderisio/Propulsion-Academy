@@ -25,7 +25,8 @@ class Home extends Component {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount = () => { // lifecycle method
+
     this.props.dispatch(fetchFeed());
   }
 
@@ -76,5 +77,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return state;
 }
+
+// mapDispatchToProps --> to pass dispatch()
 
 export default connect(mapStateToProps)(Home);

@@ -10,4 +10,5 @@ export default combineReducers ({
 	feed,
 	following,
 	users,
+
 })

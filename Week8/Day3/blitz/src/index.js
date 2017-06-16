@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'; // es un componente
 import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
 
 import Login from './Routes/Login';
@@ -51,3 +51,5 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+
+// withRouter

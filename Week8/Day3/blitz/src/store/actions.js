@@ -166,6 +166,7 @@ export const likeBlitz = (content) => (dispatch, getState) => {
 			console.log('feed', feed)
 			const action = likeBlitz(feed._id);
 			dispatch(action);
+			
 		}) 
 		.catch(err => {
 			console.log('an error ocurred', err);

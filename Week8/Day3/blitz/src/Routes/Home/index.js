@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFeed, postBlitz } from '../../store/actions';
+import { fetchFeed, postBlitz, deleteBlitz, fetchLikes } from '../../store/actions';
 
 import Header from '../../components/Header';
 import NewBlitz from '../../components/NewBlitz';
 import FeedItem from '../../components/FeedItem';
 import Footer from '../../components/Footer';
-
 
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -26,7 +25,6 @@ class Home extends Component {
   }
 
   componentDidMount = () => { // lifecycle method
-
     this.props.dispatch(fetchFeed());
   }
 
@@ -38,19 +36,28 @@ class Home extends Component {
     const content = e.currentTarget.value;
     this.setState({ content });
   };
+
   postBlitz = (e) => {
     e.preventDefault();
     const postAction = postBlitz(this.state.content);
     this.props.dispatch(postAction);
+
+  }
+
+  deleteBlitz = (blitz) => {
+    const deleteAction = deleteBlitz(blitz);
+    //this.props.dispatch(deleteAction);
   }
 
   render() {
+    console.log('home props', this.props)
+    const username = this.props.currentUser.username;
     const feed = this.props.feed;
     // if there are not feeds yet
     if (Object.keys(feed).length === 0) {
       return <p> Loading home page... </p>
     }
-  
+
     // home display
     return (
       <div className="App">
@@ -65,7 +72,9 @@ class Home extends Component {
 
           <p className="Title">Check what you missed!</p><br/>
           <div>
-              { feed.map((feedItem, index) => <FeedItem key={index} feedItem={feedItem} />)}
+              { feed.map((feedItem, index) => <FeedItem 
+                key={index} feedItem={feedItem} currentUser={username} deleteBlitz={ this.deleteBlitz } 
+                fetchLikes={ this.props.dispatch(fetchLikes()) }/>)}
           </div>
         </div>
         <Footer />
@@ -81,3 +90,5 @@ const mapStateToProps = (state) => {
 // mapDispatchToProps --> to pass dispatch()
 
 export default connect(mapStateToProps)(Home);
+
+          

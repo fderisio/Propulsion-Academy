@@ -1,31 +1,29 @@
 export const setCurrentUserCreator = (user) => {
-	return {
-		type: 'setUser',
-		user
-	}
+	return { type: 'setUser', user }
 }
 export const setFeed = (feed) => {
-	return {
-		type: 'setFeed',
-		feed
-	}
+	return { type: 'setFeed', feed } 
+}
+export const setFollows = (user) => {
+	return { type: 'setFollows', user }
 }
 export const setUsers = (usersArray) => {
-	return {
-		type: 'setUsers',
-		usersArray
-	}
+	return { type: 'setUsers', usersArray }
 }
 export const addBlitz = (blitz) => {
-	return {
-		type: 'addBlitz',
-		blitz
-	}
+	return { type: 'addBlitz',	blitz }
+}
+export const likeBlitz = (blitz) => {
+	return { type: 'likeBlitz',	blitz }
+}
+export const eliminateBlitz = (blitz) => {
+	return { type: 'deleteBlitz', blitz }
+}
+export const newUser = (user) => {
+	return { type: 'addNewUser', user }
 }
 export const logOutUser = () => {
-	return {
-		type: 'logOut'
-	}
+	return { type: 'logOut' }
 }
 
 // POST request
@@ -139,34 +137,59 @@ export const postBlitz = (content) => (dispatch, getState) => {
 		.then(res => res.json())
 		.then(blitzs => {
 			console.log('blitzs', blitzs)
-			const action = addBlitz(blitzs);
-			dispatch(action);
+			// const action = addBlitz(blitzs);
+			// dispatch(action);
 		}) 
 		.catch(err => {
 			console.log('an error ocurred', err);
 		})
 }
 
-export const likeBlitz = (content) => (dispatch, getState) => { 
+export const fetchLikes = (blitz) => (dispatch, getState) => { 
 	const currentUser = getState().currentUser;
 	const headers  = new Headers({ 
 		'Content-Type': 'application/json',
 		Authorization: `Bearer ${currentUser.token}`
 	})
-	const body = { content: content };
+	const body = { blitz: blitz };
 
 	const config = { 
 		headers: headers, // tells the fetch which format is (in this case Json)
 		method: 'POST', 
 		body: JSON.stringify(body) }; 
 
-	fetch('https://propulsion-blitz.herokuapp.com/api/feed', config)
+	fetch('https://propulsion-blitz.herokuapp.com/api/blitzs/:blitzId/like', config)
 		.then(res => res.json())
-		.then(feed => {
-			console.log('feed', feed)
-			const action = likeBlitz(feed._id);
-			dispatch(action);
+		.then(likes => {
+			console.log('likes', likes)
+			// const action = likeBlitz(likes);
+			// dispatch(action);
 			
+		}) 
+		.catch(err => {
+			console.log('an error ocurred', err);
+		})
+}
+
+export const deleteBlitz = (blitz) => (dispatch, getState) => { 
+	const currentUser = getState().currentUser;
+	const headers  = new Headers({ 
+		'Content-Type': 'application/json',
+		Authorization: `Bearer ${currentUser.token}`
+	})
+	const body = { blitz: blitz };
+
+	const config = { 
+		headers: headers, // tells the fetch which format is (in this case Json)
+		method: 'DELETE', 
+		body: JSON.stringify(body) }; 
+
+	fetch('https://propulsion-blitz.herokuapp.com/api/blitzs', config)
+		.then(res => res.json())
+		.then(blitzs => {
+			console.log('blitzs', blitzs)
+			// const action = eliminateBlitz(blitzs);
+			// dispatch(action);
 		}) 
 		.catch(err => {
 			console.log('an error ocurred', err);

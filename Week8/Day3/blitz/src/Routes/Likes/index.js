@@ -15,17 +15,17 @@ class Likes extends Component {
   nextPage = (value) => { this.props.history.push(value); }
 
   render() {
-    console.log('likes props', this.props)
-    const likes = this.props.currentUser.likes; // array of likes
-    console.log('likesarray', likes)
-    // if (likes.length === 0) {
+    // console.log('likes props', this.props)
+    // const likes = this.props.currentUser.likes; // array of likes
+    // console.log('likesarray', likes)
+    // if (likes === 'undefined') {
     //   return <p> Loading home page... </p>
     // }
 
     return (
       <div className="App">
         <Header nextPage = {this.nextPage} />
-        <h1> This are your likes </h1>
+        <h1> These are your likes </h1>
         <h3> Coming soon...</h3>
         <Footer />
       </div>

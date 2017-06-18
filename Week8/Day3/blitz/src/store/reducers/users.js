@@ -3,6 +3,10 @@ const Users = (state=[], action) => {
 		case 'setUsers':
 			const newState = [ ...action.usersArray ];
 			return newState;
+		case 'addNewUser':
+			const newUserState = [ ...this.state ];
+			newUserState.push(action.newUser);
+			return newUserState;
 		default:
 			return state;
 	}

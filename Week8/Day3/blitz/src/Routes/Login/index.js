@@ -43,6 +43,11 @@ class Login extends Component {
         }
       })
   };
+
+  signup = (e) => {
+    e.preventDefault();
+    this.props.history.push('/signup');
+  }
   
   render() {
     return (
@@ -56,7 +61,7 @@ class Login extends Component {
           <br /><br /><br />
           <RaisedButton type="submit" onClick={ this.login } label="Sign In" />
         </form><br/>
-        <RaisedButton type="submit" label="Sign Up" />
+        <RaisedButton type="submit" label="Sign Up" onClick= {this.signup }/>
         <Footer />
       </div>
     );

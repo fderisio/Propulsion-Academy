@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'; // es un componente
 import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
 
 import Login from './Routes/Login';
+import SignUp from './Routes/SignUp';
 import Home from './Routes/Home';
 import Profile from './Routes/Profile';
 import Likes from './Routes/Likes';
@@ -39,6 +40,7 @@ ReactDOM.render(
 		<Router>
 			<Switch>
 				<Route exact path="/" component={ Login } />
+				<Route exact path="/signup" component={ SignUp } />
 				<Route exact path="/feed" component={ Home } />
 				<Route exact path="/users/:userId" component={ Profile } />
 				<Route exact path="/likes" component={ Likes } />

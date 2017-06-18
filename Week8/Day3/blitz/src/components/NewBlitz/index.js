@@ -17,18 +17,19 @@ class NewBlitz extends Component {
   }
 
   handleBlitz = (e) => {
+    e.preventDefault();
     const content = e.currentTarget.value;
     this.setState({ content });
   };
 
   render() {
-    //console.log(feed)
+    console.log('blitz props', this.props)
     return (
         <Card expandable={false} >
           <CardTitle title="What would you like to share?" subtitle="Tell us!" />
           <TextField hintText="Write your blitz here" multiLine={true} rows={2} rowsMax={4} onChange={ this.hendleBlitz }/>
           <br />
-          <RaisedButton type="submit" label="Post" onClick={ this.postBlitz } />
+          <RaisedButton type="submit" label="Post" onClick={ () => this.props.postBlitz(this.state.content) } />
         </Card>
     );
   }

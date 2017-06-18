@@ -23,7 +23,6 @@ class Profile extends Component {
         <h1> {user}´s Profile </h1>
         <h3> Coming soon...</h3>
         <Footer />
-        
       </div>
     );
   }

@@ -41,7 +41,6 @@ class Home extends Component {
     e.preventDefault();
     const postAction = postBlitz(this.state.content);
     this.props.dispatch(postAction);
-
   }
 
   deleteBlitz = (blitz) => {
@@ -50,10 +49,13 @@ class Home extends Component {
   }
 
   render() {
-    console.log('home props', this.props)
+    //console.log('home props', this.props)
     const username = this.props.currentUser.username;
     const feed = this.props.feed;
-    // if there are not feeds yet
+    console.log('feed',feed)
+    feed.sort(function(a,b) {return (a.created_at > b.created_at) ? -1 : ((b.created_at > a.created_at) ? 1 : 0);} );
+    
+    // if there are no feeds yet
     if (Object.keys(feed).length === 0) {
       return <p> Loading home page... </p>
     }
@@ -74,8 +76,9 @@ class Home extends Component {
           <div>
               { feed.map((feedItem, index) => <FeedItem 
                 key={index} feedItem={feedItem} currentUser={username} deleteBlitz={ this.deleteBlitz } 
-                fetchLikes={ this.props.dispatch(fetchLikes()) }/>)}
+                fetchLikes={ this.props.dispatch(fetchLikes(feed._id)) }/>)}
           </div>
+
         </div>
         <Footer />
       </div>

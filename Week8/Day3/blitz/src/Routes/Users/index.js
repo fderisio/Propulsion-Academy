@@ -17,12 +17,12 @@ class Users extends Component {
 
   nextPage = (value) => { this.props.history.push(value); }
 
-  // following or unfollowing functions
-  follow = (user, isFollow) => {
+  // follow user
+    follow = (user, isFollow) => {
     this.props.currentUser.follows.push(user);
     isFollow = true;
   };
-
+  // unfollow user
   unfollow = (user, isFollow) => {
     for (let i=0; i<this.props.currentUser.follows.length; i++) {
       if (user === this.props.currentUser.follows[i]) {
@@ -39,7 +39,8 @@ class Users extends Component {
         <Header nextPage = {this.nextPage} />
         <h3> Registered Users </h3>
         <div>
-          { users.map((userItem, index) => <UserItem key={index} userItem={userItem} follow={this.follow} unfollow={this.unfollow}/>)}
+          { users.map((userItem, index) => 
+            <UserItem key={index} userItem={userItem} follow={this.follow} unfollow={this.unfollow} showLink={ true }/>)}
         </div>
         <Footer />
       </div>

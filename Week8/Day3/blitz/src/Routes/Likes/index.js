@@ -15,12 +15,12 @@ class Likes extends Component {
   nextPage = (value) => { this.props.history.push(value); }
 
   render() {
-    // console.log('likes props', this.props)
-    // const likes = this.props.currentUser.likes; // array of likes
-    // console.log('likesarray', likes)
-    // if (likes === 'undefined') {
-    //   return <p> Loading home page... </p>
-    // }
+    console.log('likes props', this.props)
+    const likes = this.props.currentUser.likes; // array of likes
+    console.log('likesarray', likes)
+    if (likes === 'undefined') {
+      return <p> Loading home page... </p>
+    }
 
     return (
       <div className="App">

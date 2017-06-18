@@ -137,34 +137,33 @@ export const postBlitz = (content) => (dispatch, getState) => {
 		.then(res => res.json())
 		.then(blitzs => {
 			console.log('blitzs', blitzs)
-			// const action = addBlitz(blitzs);
-			// dispatch(action);
+			const action = addBlitz(blitzs);
+			dispatch(action);
 		}) 
 		.catch(err => {
 			console.log('an error ocurred', err);
 		})
 }
 
-export const fetchLikes = (blitz) => (dispatch, getState) => { 
+export const fetchLikes = (blitzId) => (dispatch, getState) => { 
 	const currentUser = getState().currentUser;
 	const headers  = new Headers({ 
 		'Content-Type': 'application/json',
 		Authorization: `Bearer ${currentUser.token}`
 	})
-	const body = { blitz: blitz };
+	const body = { blitzId: blitzId };
 
 	const config = { 
 		headers: headers, // tells the fetch which format is (in this case Json)
 		method: 'POST', 
 		body: JSON.stringify(body) }; 
 
-	fetch('https://propulsion-blitz.herokuapp.com/api/blitzs/:blitzId/like', config)
+	fetch('https://propulsion-blitz.herokuapp.com/api/blitzs/'+blitzId+'/like', config)
 		.then(res => res.json())
 		.then(likes => {
-			console.log('likes', likes)
-			// const action = likeBlitz(likes);
-			// dispatch(action);
-			
+			//console.log('likes', likes)
+			const action = likeBlitz(likes);
+			dispatch(action);	
 		}) 
 		.catch(err => {
 			console.log('an error ocurred', err);

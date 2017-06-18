@@ -10,10 +10,9 @@ class UserItem extends Component {
   constructor(props) {
     super(props);
     this.state={
-      
       isFollowed: true
     }
-  }
+  };
 
   render() {
     // extra variables
@@ -21,10 +20,10 @@ class UserItem extends Component {
     const userId = this.props.userItem._id;
     const avatar = this.props.userItem.avatar;
     const isFollowed = this.props.userItem.isFollowed;
+  
     const followButton = (isFollowed) ? 
-
       <FlatButton label="Following" onClick={ () => this.props.unfollow(userId, isFollowed) }/> : 
-      <FlatButton label="Follow" onClick={ () => this.props.follow(userId, isFollowed) }/>;
+      <FlatButton label="Follow" onClick={ () => this.props.follow(userId, isFollowed) }/> ;
 
     console.log(isFollowed)
 

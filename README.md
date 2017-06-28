@@ -37,18 +37,18 @@
   - [Day 4](Week6/Day4) - REST Web services (Controller)
   - [Day 5](Week6/Day5) - Security (websecurityconfig)
   
- **Week 7 JavaScript & React:**
+ **Week 7 JavaScript & React:** 05.06.2017 - 09.06.2017
   - [Day 1](Week7/Day1) - Draw with functions - Snake Game (JavaScript)
   - [Day 2](Week7/Day2) - Star Wars Book (fetch functions - JavaScript)
   - [Day 3](Week7/Day3) - Scroll (JavaScript)
   - [Day 4](Week7/Day4) - To Do List (React)
   - [Day 5](Week7/Day5) - Shopping Cart (React)
  
- **Week 8 React-Redux:**
+ **Week 8 React-Redux:** 12.06.2017 - 16.06.2017
   - [Day 1](Week8/Day1) - To Do List (adding Redux)
   - [Day 2](Week8/Day2) - Trivia Game
   - [Day 3 to 5](Week8/Day3) - Blitz App
  
-  **Week 9 & 10 Group Project**
+  **Week 9 & 10 Group Project** 19.06.2017 - 30.06.2017
   
-  **Week 11 & 12 Individual Final Project**
+  **Week 11 & 12 Individual Final Project** 03.07.2017 - 14.07.2017

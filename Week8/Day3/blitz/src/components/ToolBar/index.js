@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
 import MenuItem from 'material-ui/MenuItem';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import './style.css';
+import { Toolbar } from 'material-ui/Toolbar';
+
+const styles = {
+  toolbar: {
+    height: '30',
+    backgroundColor: 'white',
+    marginLeft: '350'
+  },
+  menuitem: {
+    fontSize: '12'
+  }
+};
 
 export default class FeedBlitzToolbar extends Component {
 
   render() {
     return (
-      <Toolbar style= { { 'height': '30px', 'backgroundColor': 'white' } }>
-        <ToolbarGroup>
-          <FontIcon className="muidocs-icon-custom-sort" />
+      <Toolbar style= { styles.toolbar }>
           <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
+            iconButtonElement={<IconButton touch={true}><NavigationExpandMoreIcon /></IconButton>}
           >
-            <MenuItem primaryText="Edit Blitz" className='MenuItem' />
-            <MenuItem primaryText="Delete Blitz" onClick={this.props.deleteBlitz} className='MenuItem' />
+            <MenuItem primaryText="Edit Blitz" style={ styles.menuitem } />
+            <MenuItem primaryText="Delete Blitz" style={ styles.menuitem } onClick={this.props.deleteBlitz} />
           </IconMenu>
-        </ToolbarGroup>
       </Toolbar>
     );
   }
 }
+

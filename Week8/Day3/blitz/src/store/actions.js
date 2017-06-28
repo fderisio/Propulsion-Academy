@@ -66,7 +66,9 @@ export const fetchLocalUser = () => (dispatch) => {
 
 // GET --> para llamarlo: this.props.dispatch(this.props.fetchFeed())
 export const fetchFeed = () => (dispatch, getState) => { 
+	console.log('holaaaa')
 	const currentUser = getState().currentUser;
+	console.log('currentUser', currentUser)
 	const headers  = new Headers({ 
 		Authorization: `Bearer ${currentUser.token}`
 	});
@@ -75,6 +77,7 @@ export const fetchFeed = () => (dispatch, getState) => {
 	fetch('https://propulsion-blitz.herokuapp.com/api/feed', config)
 		.then(res => res.json())
 		.then(feed => {
+			console.log(feed)
 			const action = setFeed(feed);
 			dispatch(action)
 		}) 
@@ -148,7 +151,7 @@ export const postBlitz = (content) => (dispatch, getState) => {
 export const fetchLikes = (blitzId) => (dispatch, getState) => { 
 	const currentUser = getState().currentUser;
 	const headers  = new Headers({ 
-		'Content-Type': 'application/json',
+		//'Content-Type': 'application/json',
 		Authorization: `Bearer ${currentUser.token}`
 	})
 	const body = { blitzId: blitzId };

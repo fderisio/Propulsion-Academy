@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
 
 class LikesItem extends Component {
 
   render() {
+    console.log(this.props)
     return (
         <Card expandable={false} >
           <CardHeader title="like" avatar="avatar"  subtitle="subtitle"/>,

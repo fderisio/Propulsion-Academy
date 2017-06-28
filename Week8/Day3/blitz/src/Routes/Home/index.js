@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchFeed, postBlitz, deleteBlitz, fetchLikes } from '../../store/actions';
 import Header from '../../components/Header';
-import NewBlitz from '../../components/NewBlitz';
 import FeedItem from '../../components/FeedItem';
 import Footer from '../../components/Footer';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import {Card, CardTitle} from 'material-ui/Card';
 import { RaisedButton } from 'material-ui';
 import TextField from 'material-ui/TextField';
 
@@ -21,7 +17,7 @@ class Home extends Component {
     }
   }
 
-  componentDidMount = () => { // lifecycle method
+  componentWillMount = () => {
     this.props.dispatch(fetchFeed());
   }
 
@@ -41,7 +37,7 @@ class Home extends Component {
   }
 
   deleteBlitz = (blitz) => {
-    const deleteAction = deleteBlitz(blitz);
+    //const deleteAction = deleteBlitz(blitz);
     //this.props.dispatch(deleteAction);
   }
 
@@ -50,17 +46,15 @@ class Home extends Component {
   }
 
   render() {
-    //console.log('home props', this.props)
-    const username = this.props.currentUser.username;
-    const feed = this.props.feed;
-    console.log('feed',feed)
-    feed.sort(function(a,b) {return (a.created_at > b.created_at) ? -1 : ((b.created_at > a.created_at) ? 1 : 0);} );
-    
     // if there are no feeds yet
-    if (Object.keys(feed).length === 0) {
+    if (this.props.feed.length === 0) {
       return <p> Loading home page... </p>
     }
 
+    const username = this.props.currentUser.username;
+    const feed = this.props.feed;
+    feed.sort(function(a,b) {return (a.created_at > b.created_at) ? -1 : ((b.created_at > a.created_at) ? 1 : 0);} );
+    
     // home display
     return (
       <div className="App">

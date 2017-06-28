@@ -6,8 +6,6 @@ import { logOutUser } from '../../store/actions';
 import { Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
-import Popover from 'material-ui/Popover';
-import Menu from 'material-ui/Menu';
 
 class Header extends Component {
 

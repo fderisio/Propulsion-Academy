@@ -17,6 +17,7 @@ class FeedItem extends Component {
     const time = Math.floor(((new Date().getTime() - new Date(feedCreation))/ (1000*60*60*24)));
     const feedAge =  (time > 1) ? time + " days ago" : (time === 1) ? time + " day ago" : "today";
 
+    // render own blitzs
     if (feedAuthor.username === this.props.currentUser) {
       return (
         <Card expandable={false} >
@@ -27,6 +28,7 @@ class FeedItem extends Component {
       );
     };
     
+    // render others blitzs
     return (
       <Card expandable={false} >
         <CardHeader title={ feedAuthor.username } avatar={ feedAuthor.avatar }  subtitle={ feedAge }/>,
@@ -35,8 +37,7 @@ class FeedItem extends Component {
                   checkedIcon={<ActionFavorite />}
                   uncheckedIcon={<ActionFavoriteBorder onClick={ () => this.props.fetchLikes(feed._id) } />}
                   label="Like"
-                  labelPosition="left"
-                  style={ { 'fontSize': '11px', 'paddingBottom': '10px', 'marginLeft': '-20px', 'textAlign': 'right' } }
+                  style={ { 'fontSize': '12px', 'paddingBottom': '10px', 'marginLeft': '30', 'textAlign': 'left' } }
         />,
       </Card>
     ); 

@@ -10,6 +10,9 @@ const feed = (state=[], action) => {
 			newBlitzsState.push(action.blitz)
 			console.log('blitzs state', newBlitzsState);
 			return newBlitzsState;
+		case 'likeBlitz':
+			const likesState = [ ...this.state ];
+			console.log(likesState)	
 		case 'deleteBlitz':
 			console.log(action.blitz._id)
 			const deleteState = [ ...this.state ];

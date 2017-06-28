@@ -16,8 +16,8 @@ h1 {
 	outline:2px solid #000;
 	font-size: 0;
 	margin:auto; /*centered grid*/
-	height:480px;
-	width:480px;
+	height:250px;
+	width:250px;
 	/*padding: 0;*/
 	border: 1px solid black; /*none*/
 }

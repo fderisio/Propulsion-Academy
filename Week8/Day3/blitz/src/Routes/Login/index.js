@@ -32,10 +32,8 @@ class Login extends Component {
   login = (e) => {
     e.preventDefault();
     const loginAction = login(this.state.email, this.state.password);
-    this.props.dispatch(loginAction)
-
-      // checks return of the loginAction
-      .then((userSearch) => {
+    this.props.dispatch(loginAction)      
+      .then((userSearch) => { // checks return of the loginAction
         if (userSearch === 'not found') {
           console.log('user not found')
         } else {

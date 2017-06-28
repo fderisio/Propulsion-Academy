@@ -48,6 +48,10 @@ class Home extends Component {
     //this.props.dispatch(deleteAction);
   }
 
+  like = (blitzId) => {
+    this.props.dispatch(fetchLikes(blitzId));
+  }
+
   render() {
     //console.log('home props', this.props)
     const username = this.props.currentUser.username;
@@ -76,7 +80,7 @@ class Home extends Component {
           <div>
               { feed.map((feedItem, index) => <FeedItem 
                 key={index} feedItem={feedItem} currentUser={username} deleteBlitz={ this.deleteBlitz } 
-                fetchLikes={ this.props.dispatch(fetchLikes(feed._id)) }/>)}
+                fetchLikes={ this.like }/>)}
           </div>
 
         </div>

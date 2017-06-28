@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from './icon2.png';
 import './style.css';
-//import Logout from '../Logout';
 import { logOutUser } from '../../store/actions';
 import { Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';

@@ -35,7 +35,7 @@ public class BankService {
 		return found;
 	}
 		
-	// for testing proposes
+	// for testing purposes
 	public int size(){
 		return bankDatabase.size();
 	}

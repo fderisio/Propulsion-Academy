@@ -54,6 +54,18 @@ class App extends Component {
         filter : newFilter
       })
   }
+
+  deleteTask = (id) => {
+    const tasks = [ ...this.state.toDos ];
+    for (let i=0; i<tasks.length; i++) {
+      if (id === tasks[i].id) {
+        tasks.pop(tasks[i]);
+      }
+    }
+    this.setState({
+      toDos : tasks
+    })
+  }
   
   render() {
     return (
@@ -61,7 +73,7 @@ class App extends Component {
         <Header /><br/>
         <NewToDo addToDo={this.addToDo} /><br/>
         <Filter setFilter={this.setFilter}/>
-        <ToDoList toDos={ this.state.toDos } filter={ this.state.filter }setCompleted={this.setCompleted}/>
+        <ToDoList toDos={ this.state.toDos } filter={ this.state.filter } delete={ this.deleteTask} setCompleted={this.setCompleted}/>
       </div>
     );
   }

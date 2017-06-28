@@ -37,9 +37,4 @@ public class Customers {
 		return "Customer´s Name: " + name + ", ID: " + id + account.toString();
 	}
 
-//	public void setAccount(Accounts account) {
-//		this.account = account;
-//	}
-	
-	
 }

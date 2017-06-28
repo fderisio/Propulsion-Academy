@@ -85,8 +85,6 @@ public class BankApp {
 				option2 = scan.nextInt();
 				checkMenu(option2);
 			}
-//			} else if (option instanceof String)) {
-//			System.out.println("Please enter only a number from 1 to 4, press 5 to go to the menu or 0 to escape");
 			
 		}	
 		
@@ -102,12 +100,6 @@ public class BankApp {
 		System.out.println("Press 7 to list all customers");
 	}
 
-//	private void checkGoBack() {
-//		System.out.println("Press 9 to go back to the menu or 0 to escape");
-//		int option2 = scan.nextInt();
-//		checkMenu(option2);
-//	}
-	
 	private static void checkMenu(int option2) {
 		if (option2 == 9) {
 			welcomeMenu();

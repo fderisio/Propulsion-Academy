@@ -157,11 +157,11 @@ export const fetchLikes = (blitzId) => (dispatch, getState) => {
 		headers: headers, // tells the fetch which format is (in this case Json)
 		method: 'POST', 
 		body: JSON.stringify(body) }; 
-
+	console.log(blitzId)
 	fetch('https://propulsion-blitz.herokuapp.com/api/blitzs/'+blitzId+'/like', config)
 		.then(res => res.json())
 		.then(likes => {
-			//console.log('likes', likes)
+			console.log('holaaaaa')
 			const action = likeBlitz(likes);
 			dispatch(action);	
 		}) 

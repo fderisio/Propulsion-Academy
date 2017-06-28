@@ -3,8 +3,7 @@
 **Week 1 JavaScript - Fundamentals:**
   - [Day 1](Week1/Day1) - Restaurant
   - [Day 2](Week1/Day2) - Trivia Game
-  - [Day 3](Week1/Day3) - Arkanoid Game Part I
-  - [Day 4](Week1/Day4) - Arkanoid Game Part II
+  - [Day 3 & 4](Week1/Day3) - Arkanoid Game
   - [Day 5](Week1/Day5) - Pong Game
   
 **Week 2 JavaScript - Advanced:**
@@ -15,14 +14,12 @@
   - [Day 5](Week2/Day5) - End of the week final excercises
   
 **Week 3 Java - Fundamentals:**
-  - [Day 1](Week3/Day1)
   - [Day 2](Week3/Day2) - Translator
   - [Day 3](Week3/Day3) - OOP
   - [Day 4](Week3/Day4) - Enums, Multidimensional Arrays
   - [Day 5](Week3/Day5) - Bank App
 
 **Week 4 Java:**
-  - [Day 1](Week4/Day1)
   - [Day 2 to 4](Week4/Day2) - Design Patterns
   - [Day 5](Week4/Day5) - Twitter App (part I)
   

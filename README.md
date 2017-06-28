@@ -7,30 +7,52 @@
   - [Day 4](Week1/Day4) - Arkanoid Game Part II
   - [Day 5](Week1/Day5) - Pong Game
   
-**Week 2 Javascript - Advanced:**
+**Week 2 JavaScript - Advanced:**
   - [Day 1](Week2/Day1) - Tests
   - [Day 2](Week2/Day2) - Advanced Objects, Inheritance
   - [Day 3](Week2/Day3) - ES6, Functional Programming
   - [Day 4](Week2/Day4) - Pacman game (the basics)
   - [Day 5](Week2/Day5) - End of the week final excercises
   
-**Week 3 Java:**
-  - [Day 1 - Fundamentals](Week3/Day1)
-  - [Day 2](Week3/Day2) 
-  - [Day 3](Week3/Day3)
-  - [Day 4](Week3/Day4)
-  - [Day 5](Week3/Day5)
+**Week 3 Java - Fundamentals:**
+  - [Day 1](Week3/Day1)
+  - [Day 2](Week3/Day2) - Translator
+  - [Day 3](Week3/Day3) - OOP
+  - [Day 4](Week3/Day4) - Enums, Multidimensional Arrays
+  - [Day 5](Week3/Day5) - Bank App
 
 **Week 4 Java:**
-  - [Day 1 - Fundamentals](Week3/Day1)
-  - [Day 2](Week3/Day2) 
-  - [Day 3](Week3/Day3)
-  - [Day 4](Week3/Day4)
-  - [Day 5](Week3/Day5)
+  - [Day 1](Week3/Day1)
+  - [Day 2 to 4](Week3/Day2) - Design Patterns
+  - [Day 5](Week3/Day5) - Twitter App (part I)
   
 **Week 5 Spring:**
-  - [Day 1 - Fundamentals](Week2/Day1)
-  - [Day 2](Week2/Day2) 
-  - [Day 3](Week2/Day3)
-  - [Day 4](Week2/Day4)
-  - [Day 5](Week2/Day5)
+  - [Day 1](Week2/Day1) - Service config
+  - [Day 2](Week2/Day2) - Mail services
+  - [Day 3](Week2/Day3) - Movie Database (basics)
+  - [Day 4](Week2/Day4) - Twitter databases
+  - [Day 5](Week2/Day5) - Database Tests
+
+**Week 6 Spring Boot:**
+  - [Day 1](Week2/Day1) - Transactions
+  - [Day 2](Week2/Day2) - Twitter App (using Spring Boot)
+  - [Day 3](Week2/Day3) - Transactions Boot 
+  - [Day 4](Week2/Day4) - REST Web services (Controller)
+  - [Day 5](Week2/Day5) - Security (websecurityconfig)
+  
+ **Week 7 JavaScript & React:**
+  - [Day 1](Week2/Day1) - Draw with functions - Snake Game(JavaScript)
+  - [Day 2](Week2/Day2) - Star Wars Book (fetch functions - JavaScript)
+  - [Day 3](Week2/Day3) - Scroll (JavaScript)
+  - [Day 4](Week2/Day4) - To Do List (React)
+  - [Day 5](Week2/Day5) - Shopping Cart (React)
+ 
+ **Week 8 React-Redux:**
+  - [Day 1](Week2/Day1) - To Do List (adding Redux)
+  - [Day 2](Week2/Day2) - Trivia Game
+  - [Day 3 to 5](Week2/Day3) - Blitz
+ 
+  **Week 9 & 10 Group Project**
+  
+   **Week 11 & 12 Individual Final Project**
+  

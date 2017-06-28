@@ -50,7 +50,7 @@
  **Week 8 React-Redux:**
   - [Day 1](Week8/Day1) - To Do List (adding Redux)
   - [Day 2](Week8/Day2) - Trivia Game
-  - [Day 3 to 5](Week8/Day3) - Blitz
+  - [Day 3 to 5](Week8/Day3) - Blitz App
  
   **Week 9 & 10 Group Project**
   

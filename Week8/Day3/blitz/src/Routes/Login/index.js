@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login, fetchFeedCreator } from '../../store/actions';
+import { login } from '../../store/actions';
 import WelcomeHeader from '../../components/WelcomeHeader';
 import Footer from '../../components/Footer';
 import '../Home/style.css';

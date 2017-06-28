@@ -9,7 +9,6 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
 import { RaisedButton } from 'material-ui';
 import TextField from 'material-ui/TextField';
 

@@ -18,5 +18,4 @@ const currentUser = (state={}, action) => {
 	}
 }
 
-
 export default currentUser;

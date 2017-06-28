@@ -12,5 +12,4 @@ const Users = (state=[], action) => {
 	}
 }
 
-
 export default Users;

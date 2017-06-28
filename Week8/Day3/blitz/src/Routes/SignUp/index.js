@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login, fetchFeedCreator } from '../../store/actions';
 import WelcomeHeader from '../../components/WelcomeHeader';
 import Footer from '../../components/Footer';
 import '../Home/style.css';
@@ -28,17 +27,6 @@ class SignUp extends Component {
 
   createAccount = (e) => {
     e.preventDefault();
-    // const loginAction = login(this.state.email, this.state.password);
-    // this.props.dispatch(loginAction)
-
-    //   // checks return of the loginAction
-    //   .then((userSearch) => {
-    //     if (userSearch === 'not found') {
-    //       console.log('user not found')
-    //     } else {
-    //       this.props.history.push('/feed');
-    //     }
-    //   })
   };
   
   render() {

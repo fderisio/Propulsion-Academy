@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { Provider } from 'react-redux'; // es un componente
 import { BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
-
 import Login from './Routes/Login';
 import SignUp from './Routes/SignUp';
 import Home from './Routes/Home';
@@ -11,7 +9,6 @@ import Profile from './Routes/Profile';
 import Likes from './Routes/Likes';
 import Users from './Routes/Users';
 import { setCurrentUserCreator } from './store/actions';
-
 import store from './store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import registerServiceWorker from './registerServiceWorker';
@@ -35,8 +32,8 @@ checkLocalUser();
 injectTapEventPlugin();
 
 ReactDOM.render(
-	<MuiThemeProvider>
-	<Provider store={ store }>
+	<MuiThemeProvider >
+	<Provider store={ store } >
 		<Router>
 			<Switch>
 				<Route exact path="/" component={ Login } />
@@ -53,5 +50,3 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
-
-// withRouter

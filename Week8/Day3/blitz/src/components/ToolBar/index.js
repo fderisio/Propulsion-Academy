@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
@@ -9,7 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import './style.css';
 
-export default class FeedBlitzToolbar extends React.Component {
+export default class FeedBlitzToolbar extends Component {
 
   render() {
     return (

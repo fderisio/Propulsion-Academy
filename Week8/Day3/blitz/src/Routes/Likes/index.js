@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProfile } from '../../store/actions';
-
 import Header from '../../components/Header';
 import LikesItem from '../../components/LikesItem';
 import Footer from '../../components/Footer';
 
 class Likes extends Component {
-
+  
   componentDidMount = () => {
     this.props.dispatch(fetchProfile());
   }
@@ -27,6 +26,9 @@ class Likes extends Component {
         <Header nextPage = {this.nextPage} />
         <h1> These are your likes </h1>
         <h3> Coming soon...</h3>
+        <div>
+          { likes.map((likeItem, index) => <LikesItem key={index} likeItem={likeItem} />) }
+        </div>
         <Footer />
       </div>
     );
@@ -39,6 +41,3 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(Likes);
 
-// <div>
-//           { likes.map((likeItem, index) => <LikesItem key={index} likeItem={likeItem} />) }
-//         </div>

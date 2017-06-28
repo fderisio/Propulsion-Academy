@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
-//import Header from './Header';
-import Header from './components/Header'; // aunque escribas el nombre de la carpeta, va a buscar el header.js, index.js
+import Header from './components/Header';
 import ToDoList from './components/ToDoList';
 import NewToDo from './components/NewToDo';
 import Filter from './components/Filter';
-
+import Footer from './components/Footer';
 
 class App extends Component {
 
   constructor(props) {
-    super(props); // constructor of react component
+    super(props);
     this.state = {
       toDos: [
         {id: 1, content: 'Learn JS', completed: false},
@@ -27,10 +25,9 @@ class App extends Component {
     const newId = this.state.toDos.length+1;
     const newTask = { id: newId, content: newToDo, completed: false}
     const newToDos = [ ...this.state.toDos ];
-    newToDos.push(newTask); // siempre hay que crear una nueva lista de states
-    this.setState({ // con setState: cada vez que se tipea en el input se renderea()
+    newToDos.push(newTask);
+    this.setState({ 
       toDos : newToDos,
-      //inputValue : ''
     });
   }
 
@@ -60,7 +57,7 @@ class App extends Component {
     const tasks = [ ...this.state.toDos ];
     for (let i=0; i<tasks.length; i++) {
       if (id === tasks[i].id) {
-        tasks.pop(tasks[i]);
+        tasks.splice(i, 1);
       }
     }
     this.setState({
@@ -75,12 +72,10 @@ class App extends Component {
         <NewToDo addToDo={this.addToDo} /><br/>
         <Filter setFilter={this.setFilter}/>
         <ToDoList toDos={ this.state.toDos } filter={ this.state.filter } delete={ this.deleteTask} setCompleted={this.setCompleted}/>
+        <Footer />
       </div>
     );
   }
 }
-// todo lo que se envia en el return del render -> va al props
-// <p className="App-intro">
-        //   To get started, edit <code>{ 'src/App.js' }</code> and save to reload.
-        // </p>
+
 export default App;

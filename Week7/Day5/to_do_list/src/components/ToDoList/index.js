@@ -3,21 +3,6 @@ import './index.css';
 
 class ToDoList extends React.Component {
 
-	// constructor(props) {
-	// 	super(props); // constructor of react component
-
-	// }
-
-	// // handleInput(e, v) { --> lleva a *
-	// handleInput = (e) => { // quita el .bind(this) ---- ONLY in React!!!!!!
-	// 	//console.log(e.currentTarget.value); // que tecla se presiono o se agrego al input
-	// 	//this.state.inputValue = e.currentTarget.value;
-	// 	this.setState({
-	// 		inputValue: e.currentTarget.value // equivale a: this.state.inputValue
-	// 	});
-	// }
-
-
 	render() {
 		return ( 
 			<div className='ToDoList'>
@@ -25,13 +10,28 @@ class ToDoList extends React.Component {
 					{
 					this.props.toDos.map(todo => {
 						if (this.props.filter === 'completed' && todo.completed === true) {
-							return <li key={todo.id} className={ todo.completed ? 'TodoItem-completed' : '' } onClick={()=>this.props.setCompleted(todo.id)}>{ todo['content'] }&nbsp;<button onClick={()=>this.props.delete(todo.id)}>Delete</button></li>;
+							return ( 
+								<div>
+									<li key={todo.id} className={ 'TodoItem-completed' } onClick={()=>this.props.setCompleted(todo.id)}>
+										{ todo['content'] }&nbsp;
+									</li>
+									<button onClick={()=>this.props.delete(todo.id)}>Delete</button>
+								</div>);
 						} else if (this.props.filter === 'pending' && todo.completed === false) {
-							return <li key={todo.id} className={ todo.completed ? 'TodoItem-completed' : '' } onClick={()=>this.props.setCompleted(todo.id)}>{ todo['content'] }&nbsp;<button onClick={()=>this.props.delete(todo.id)}>Delete</button></li>;
+							return (
+								<div>
+									<li key={todo.id} onClick={()=>this.props.setCompleted(todo.id)}>
+										{ todo['content'] }&nbsp;</li>
+									<button onClick={()=>this.props.delete(todo.id)}>Delete</button>
+								</div>);
 						} else if (this.props.filter === 'all') {
-							return <li key={todo.id} className={ todo.completed ? 'TodoItem-completed' : '' } onClick={()=>this.props.setCompleted(todo.id)}>{ todo['content'] }&nbsp;<button onClick={()=>this.props.delete(todo.id)}>Delete</button></li>;
+							return (
+								<div>
+									<li key={todo.id} className={ todo.completed ? 'TodoItem-completed' : '' } onClick={()=>this.props.setCompleted(todo.id)}>
+										{ todo['content'] }&nbsp;</li>
+									<button onClick={()=>this.props.delete(todo.id)}>Delete</button>
+								</div>);
 						}
-
 					})
 					}
 				</ul>

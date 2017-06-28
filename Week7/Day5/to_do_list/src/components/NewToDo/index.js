@@ -3,7 +3,7 @@ import React from 'react';
 class NewToDo extends React.Component {
 
 	constructor(props) {
-		super(props); // constructor of react component
+		super(props);
 		this.state = {
 			inputValue: ''
 		}
@@ -11,7 +11,7 @@ class NewToDo extends React.Component {
 
 	handleInput = (e) => { 
 		this.setState({
-			inputValue: e.currentTarget.value // equivale a: this.state.inputValue
+			inputValue: e.currentTarget.value
 		});
 	}
 
@@ -23,19 +23,7 @@ class NewToDo extends React.Component {
 		})
 	}
 
-	// handleEnterKey(target) {
-	// 	if(target.charCode==13){
-	// 		console.log('hola')
-	// 	//if(event.keyCode === 13){
-	// 		this.addNewToDo();
-	// 	}
-	// }
-
-	handleForm = (e) => {
-
-	}
-
-	render() {
+	render() {  // forms: used to take the information from every input in it
 		return ( 
 			<div className='NewToDo'>
 				<form onSubmit={ this.handleForm }>
@@ -46,7 +34,6 @@ class NewToDo extends React.Component {
 		)
 	}
 
-	// forms: used to take the information from every input in it
 }
 
 export default NewToDo;

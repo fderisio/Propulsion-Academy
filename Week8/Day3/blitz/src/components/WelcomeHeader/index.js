@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
-import logo from '../Header/icon2.png';
+import logo from '../Header/icon.png';
 import './style.css';
 
 class WelcomeHeader extends Component {
@@ -17,5 +16,3 @@ class WelcomeHeader extends Component {
 }
 
 export default WelcomeHeader;
-
-// Trademark logo 

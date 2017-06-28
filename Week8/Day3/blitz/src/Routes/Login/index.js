@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { login, fetchFeedCreator } from '../../store/actions';
 import WelcomeHeader from '../../components/WelcomeHeader';
 import Footer from '../../components/Footer';
 import '../Home/style.css';
-
 import { RaisedButton } from 'material-ui';
 import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
 
 class Login extends Component {
 

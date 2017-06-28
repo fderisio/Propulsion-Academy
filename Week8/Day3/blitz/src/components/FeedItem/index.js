@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import ToolBar from '../../components/ToolBar';
-
 import {Card, CardHeader, CardText} from 'material-ui/Card';
-//import FlatButton from 'material-ui/FlatButton';
-//import IconButton from 'material-ui/IconButton';
-//import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Checkbox from 'material-ui/Checkbox';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
@@ -12,8 +8,6 @@ import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 class FeedItem extends Component {  
 
   render() {
-    //console.log('feeditem props', this.props)
-
     // extra variables
     const feed = this.props.feedItem;
     const feedAuthor = this.props.feedItem._user;

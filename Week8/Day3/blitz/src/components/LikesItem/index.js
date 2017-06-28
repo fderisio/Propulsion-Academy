@@ -8,9 +8,6 @@ import ActionAndroid from 'material-ui/svg-icons/action/android';
 class LikesItem extends Component {
 
   render() {
-    // extra variables
-    console.log('likes item', this.props)
-    
     return (
         <Card expandable={false} >
           <CardHeader title="like" avatar="avatar"  subtitle="subtitle"/>,
@@ -26,4 +23,3 @@ class LikesItem extends Component {
 }
 
 export default LikesItem;
-

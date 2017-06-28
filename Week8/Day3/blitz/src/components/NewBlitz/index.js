@@ -23,7 +23,6 @@ class NewBlitz extends Component {
   };
 
   render() {
-    console.log('blitz props', this.props)
     return (
         <Card expandable={false} >
           <CardTitle title="What would you like to share?" subtitle="Tell us!" />

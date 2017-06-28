@@ -39,7 +39,6 @@ export const login = (email, password) => (dispatch, getState) => {
 	return fetch('https://propulsion-blitz.herokuapp.com/api/login', config)
 		.then(res => res.json())
 		.then(user => {
-			console.log(user)
 			if (!user._id) {
 				return 'not found';
 			} else {
@@ -77,7 +76,6 @@ export const fetchFeed = () => (dispatch, getState) => {
 	fetch('https://propulsion-blitz.herokuapp.com/api/feed', config)
 		.then(res => res.json())
 		.then(feed => {
-			console.log(feed)
 			const action = setFeed(feed);
 			dispatch(action)
 		}) 

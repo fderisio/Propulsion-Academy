@@ -32,6 +32,7 @@ class Login extends Component {
     this.props.dispatch(loginAction)      
       .then((userSearch) => { // checks return of the loginAction
         if (userSearch === 'not found') {
+          return <p>Sorry... user not found</p>
           console.log('user not found')
         } else {
           this.props.history.push('/feed');

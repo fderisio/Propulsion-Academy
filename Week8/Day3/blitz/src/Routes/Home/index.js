@@ -62,7 +62,7 @@ class Home extends Component {
         <div className="Body">
 
           <Card expandable={false} >
-            <CardTitle title="What would you like to share?" subtitle="Tell us!" />
+            <CardTitle title="What would you like to share?" subtitle="Tell us!" style={{fontSize: '10'}}/>
             <TextField hintText="Write your blitz here" multiLine={true} rows={2} rowsMax={4} onChange={ this.handleBlitz }/>
             <RaisedButton type="submit" label="Post" onClick={ this.postBlitz } />
           </Card>

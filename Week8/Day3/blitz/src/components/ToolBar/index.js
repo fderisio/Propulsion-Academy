@@ -12,7 +12,6 @@ import './style.css';
 export default class FeedBlitzToolbar extends React.Component {
 
   render() {
-    //console.log('toolbar props', this.props)
     return (
       <Toolbar style= { { 'height': '30px', 'backgroundColor': 'white' } }>
         <ToolbarGroup>

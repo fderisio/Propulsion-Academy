@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FlatButton from 'material-ui/FlatButton';
-
 import { fetchUsers, fetchProfile } from '../../store/actions';
 import Header from '../../components/Header';
 import UserItem from '../../components/UserItem';
-
 import Footer from '../../components/Footer';
 
 class Users extends Component {
@@ -53,4 +51,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Users);
-

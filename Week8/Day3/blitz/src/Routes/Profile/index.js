@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProfile } from '../../store/actions';
-
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
@@ -33,4 +32,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Profile);
-

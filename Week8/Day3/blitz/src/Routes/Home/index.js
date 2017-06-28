@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchFeed, postBlitz, deleteBlitz, fetchLikes } from '../../store/actions';
-
 import Header from '../../components/Header';
 import NewBlitz from '../../components/NewBlitz';
 import FeedItem from '../../components/FeedItem';
 import Footer from '../../components/Footer';
-
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';

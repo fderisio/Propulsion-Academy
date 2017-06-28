@@ -1,4 +1,3 @@
-
 const feed = (state=[], action) => {
 	switch (action.type) {
 		case 'setFeed':

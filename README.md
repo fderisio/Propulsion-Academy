@@ -55,4 +55,7 @@
   **Week 9 & 10 Group Project**
   
    **Week 11 & 12 Individual Final Project**
+<<<<<<< HEAD
 
+=======
+>>>>>>> 160a43cee8aaa914ed2a5d5efd572cd1e2dd5be5

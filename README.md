@@ -46,8 +46,8 @@
  
  **Week 8 React-Redux:** 12.06.2017 - 16.06.2017
   - [Day 1](Week8/Day1) - To Do List (adding Redux)
-  - [Day 2](Week8/Day2) - Trivia Game
-  - [Day 3 to 5](Week8/Day3) - Blitz App
+  - [Day 2](Week8/Day2) - Trivia Game (Quiz game fetching questions and answers)
+  - [Day 3 to 5](Week8/Day3) - Blitz App (A Twitter App fetching info from a REST API)
  
   **Week 9 & 10 Group Project** 19.06.2017 - 30.06.2017
   - Check [YelpTeam1](https://github.com/fderisio/YelpTeam1) repository

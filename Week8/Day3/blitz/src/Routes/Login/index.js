@@ -21,6 +21,7 @@ class Login extends Component {
     const email = e.currentTarget.value;
     this.setState({ email });
   };
+  
   handlePassword = (e) => {
     const password = e.currentTarget.value;
     this.setState({ password });

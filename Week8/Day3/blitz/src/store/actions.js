@@ -128,7 +128,8 @@ export const postBlitz = (content) => (dispatch, getState) => {
 		Authorization: `Bearer ${currentUser.token}`
 	})
 	const body = { content: content };
-
+	console.log('body', body)
+	console.log('JSON body', JSON.stringify(body))
 	const config = { 
 		headers: headers, // tells the fetch which format is (in this case Json)
 		method: 'POST', 

@@ -52,3 +52,4 @@
   **Week 9 & 10 Group Project** 19.06.2017 - 30.06.2017
   
   **Week 11 & 12 Individual Final Project** 03.07.2017 - 14.07.2017
+  - See repositories [fderisio/SaveUp-BackEnd] & [fderisio/SaveUp-FrontEnd]

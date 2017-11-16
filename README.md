@@ -50,7 +50,7 @@
   - [Day 3 to 5](Week8/Day3) - Blitz App
  
   **Week 9 & 10 Group Project** 19.06.2017 - 30.06.2017
-  - Check YelpTeam1 repository
+  - Check YelpTeam1 [a link](https://github.com/fderisio/YelpTeam1) repository
   
   **Week 11 & 12 Individual Final Project** 03.07.2017 - 14.07.2017
   - Check repositories SaveUp-BackEnd & SaveUp-FrontEnd

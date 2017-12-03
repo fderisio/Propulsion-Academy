@@ -16,9 +16,9 @@ h1 {
 	top: 10px;
 	/*outline:2px solid #000;*/
 	font-size: 0;
-	margin:auto; /*centered grid*/
-	height:250px;
-	width:250px;
+	margin: auto; /*centered grid*/
+	height: 250px;
+	width: 250px;
 	/*padding: 0;*/
 	/*border: 1px solid black; /*none;*/
 }
@@ -26,15 +26,15 @@ h1 {
 .cell {
 	border: 1px solid #000;
 	background-color: white;
-	display:inline-block;
+	display: inline-block;
 }
 
 .snake {
 	background-color: black;
-	display:inline-block;
+	display: inline-block;
 }
 
 .nonActive {
 	background-color: white;
-	display:inline-block;
+	display: inline-block;
 }

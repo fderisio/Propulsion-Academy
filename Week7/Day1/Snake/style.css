@@ -30,6 +30,7 @@ h1 {
 }
 
 .snake {
+	border: 1px solid #000;
 	background-color: black;
 	display: inline-block;
 }

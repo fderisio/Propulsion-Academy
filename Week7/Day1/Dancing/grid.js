@@ -1,4 +1,6 @@
 function createGrid() {
+	
+	// draw grid 5x5
 	let columns = 5;
 	let rows = 5;
 	for (let i = 1; i <= rows; i++) {
@@ -16,7 +18,7 @@ function createGrid() {
 	// click function
 	const cells = $('.cell');
 	cells.on('click', function(e) {
-		$('.clicked').attr('class', 'cell nonActive');
+		//$('.clicked').attr('class', 'cell nonActive');
 		$(e.currentTarget).addClass('clicked');
 		// console.log('row' + rowPos + ' col' + colPos);
 	});
